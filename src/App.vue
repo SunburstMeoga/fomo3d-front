@@ -15,4 +15,9 @@ export default {
   padding: 0;
   margin: 0;
 }
+
+body {
+  min-width: 1605px;
+  background: #000;
+}
 </style>
