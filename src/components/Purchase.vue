@@ -19,7 +19,7 @@
                     <input type="number" v-model="keyNumber">
                 </div>
                 <div class="left-currency">
-                    @BNB
+                    @HAH
                 </div>
             </div>
             <div class="operating-right">

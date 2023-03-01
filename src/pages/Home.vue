@@ -19,7 +19,7 @@
         </div>
         <div class="module-title">
             <module-title titleWord="Vanity & referrals"
-                secondTitle="Advise others to invest in this exit scam and we'll reward you 10% of everything they lose. In BNB"></module-title>
+                secondTitle="Advise others to invest in this exit scam and we'll reward you 10% of everything they lose. In HAH"></module-title>
         </div>
         <div class="referrals module">
             <referrals></referrals>
