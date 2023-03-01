@@ -24,6 +24,12 @@
         <div class="referrals module">
             <referrals></referrals>
         </div>
+        <div class="module-title">
+            <module-title titleWord="Round & Teams"></module-title>
+        </div>
+        <div class="prize-pool module">
+            <prize-pool></prize-pool>
+        </div>
     </div>
 </template>
 
@@ -33,13 +39,15 @@ import ModuleTitle from '../components/ModuleTitle.vue';
 import Purchase from '../components/Purchase.vue'
 import Valut from '../components/Valut.vue';
 import Referrals from '../components/Referrals.vue';
+import PrizePool from '../components/PrizePool.vue';
 export default {
     components: {
         MenuBar,
         ModuleTitle,
         Purchase,
         Valut,
-        Referrals
+        Referrals,
+        PrizePool
     }
 }
 </script>
@@ -86,5 +94,9 @@ export default {
     border-radius: 6px;
     background: rgba(36, 36, 36, .7);
     padding-bottom: 20px;
+}
+
+.prize-pool {
+    margin-bottom: 20px;
 }
 </style>
