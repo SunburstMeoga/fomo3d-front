@@ -34,12 +34,15 @@
 </template>
 
 <script>
-import MenuBar from '../components/MenuBar.vue';
-import ModuleTitle from '../components/ModuleTitle.vue';
+
+import MenuBar from '../components/MenuBar.vue'
+import ModuleTitle from '../components/ModuleTitle.vue'
 import Purchase from '../components/Purchase.vue'
-import Valut from '../components/Valut.vue';
-import Referrals from '../components/Referrals.vue';
-import PrizePool from '../components/PrizePool.vue';
+import Valut from '../components/Valut.vue'
+import Referrals from '../components/Referrals.vue'
+import PrizePool from '../components/PrizePool.vue'
+import { config } from '../const/config.js'
+
 export default {
     components: {
         MenuBar,
@@ -48,6 +51,19 @@ export default {
         Valut,
         Referrals,
         PrizePool
+    },
+    data() {
+        return {
+            web3: new this.Web3(window.ethereum)
+        }
+    },
+    mounted() {
+        this.getWeb3()
+    },
+    methods: {
+        getWeb3() {
+            console.log(new this.web3.eth.Contract(config.erc20_abi, config.con_addr))
+        }
     }
 }
 </script>

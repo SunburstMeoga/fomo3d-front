@@ -18,11 +18,11 @@ export default {
             vanityList: [
                 {
                     title: 'Wallet Referral:',
-                    content: 'fomo3d.net/0x26e3ab522ca04ecdd4139E893F9abfADe7b129bf',
+                    content: 'fomo3d.net/0x26e3ab522ca04ecdd4139E893F9abfADe7b129bf'
                 },
                 {
                     title: 'Anonymous Referral:',
-                    content: 'fomo3d.net/',
+                    content: 'fomo3d.net/'
                 },
                 {
                     title: 'Vanity Referral:',

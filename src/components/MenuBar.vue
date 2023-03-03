@@ -9,17 +9,20 @@
                     {{ item.title }}
                 </div>
             </div>
-            <div class="connect">
-                Connect
+            <div class="connect" @click="login()">
+                {{ currentAddress }}
             </div>
         </div>
     </div>
 </template>
 
 <script>
+// import { config } from '../const/config.js'
+
 export default {
     data() {
         return {
+            web3: new this.Web3(window.ethereum),
             operatingList: [
                 {
                     title: 'Language'
@@ -30,7 +33,26 @@ export default {
                 {
                     title: 'Tutorial'
                 }
-            ]
+            ],
+            currentAddress: 'Connect'
+        }
+    },
+    mounted() {
+        this.init()
+    },
+    methods: {
+        async login() {
+            if (typeof window.ethereum !== 'undefined') {
+                await window.ethereum.request({ method: 'eth_requestAccounts' })
+                this.init()
+            } else {
+                console.log('当前浏览器不支持')
+            }
+        },
+        init() {
+            this.$store.commit('getCurrentAddress', window.ethereum.selectedAddress)
+            console.log(this.$store.state.currentAddress)
+            this.currentAddress = this.$store.state.currentAddress
         }
     }
 }

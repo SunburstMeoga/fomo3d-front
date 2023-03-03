@@ -19,7 +19,7 @@ export default {
         secondTitle: {
             type: String,
             default: ''
-        },
+        }
     }
 }
 </script>

@@ -89,7 +89,7 @@ export default {
                     image: require('../assets/bear.png'),
                     value: 0
                 }
-            ],
+            ]
         }
     }
 }
