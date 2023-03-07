@@ -10,7 +10,7 @@
                 </div>
             </div>
             <div class="connect" @click="login()">
-                {{ currentAddress }}
+                {{ currentAddress ? currentAddress : 'Connect' }}
             </div>
         </div>
     </div>
@@ -50,9 +50,9 @@ export default {
             }
         },
         init() {
-            this.$store.commit('getCurrentAddress', window.ethereum.selectedAddress)
-            console.log(this.$store.state.currentAddress)
+            console.log('------------', this.$store)
             this.currentAddress = this.$store.state.currentAddress
+            this.$store.commit('getCurrentAddress', window.ethereum.selectedAddress)
         }
     }
 }
