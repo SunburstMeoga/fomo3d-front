@@ -71,7 +71,7 @@ export default {
 .content {
     display: inline-block;
     margin: 0 auto;
-    width: 80%;
+    width: 90%;
     display: flex;
     align-items: center;
     justify-content: space-between;
