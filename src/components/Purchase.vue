@@ -19,7 +19,7 @@
                     <input type="number" v-model="keyNumber">
                 </div>
                 <div class="left-currency">
-                    @HAH
+                    {{ ehtProportion }} @HAH
                 </div>
             </div>
             <div class="operating-right">
@@ -63,10 +63,21 @@ export default {
                 }
             ],
             currentTeam: 0,
-            keyNumber: 1
+            keyNumber: 1,
+            ehtProportion: 0
         }
     },
+    mounted() {
+        this.getEthByKey()
+    },
     methods: {
+        getEthByKey() {
+            let web3Contract = new this.web3.eth.Contract(config.erc20_abi, config.con_addr)
+            web3Contract.methods.getEthByKeys(1).call().then((result) => {
+                console.log('当前一个key需要', result, '个wei')
+                this.ehtProportion = this.web3.utils.fromWei(result, 'ether')
+            })
+        },
         clickTeam(index) {
             this.currentTeam = index
         },
@@ -74,11 +85,10 @@ export default {
             let web3Contract = new this.web3.eth.Contract(config.erc20_abi, config.con_addr)
             let data = web3Contract.methods.buyKeys(this.keyNumber, this.currentTeam).encodeABI()
             const transactionParameters = {
-                gasPrice: this.web3.utils.toHex(this.web3.utils.toWei(config.amount, config.unit)),
                 to: config.con_addr,
                 from: window.ethereum.selectedAddress,
                 data: data,
-                chainId: this.web3.utils.toHex(this.chainId)
+                value: this.ethByKey
             }
             window.ethereum.request({
                 method: 'eth_sendTransaction',

@@ -40,19 +40,26 @@ export default {
     },
     methods: {
         async login() {
-            if (typeof window.ethereum !== 'undefined') {
-                await window.ethereum.request({ method: 'eth_requestAccounts' })
-                this.init()
-            } else {
-                this.$notify.error({
-                    title: '错误',
-                    message: '该浏览器不支持'
-                })
+            if (!this.currentAddress) {
+                if (typeof window.ethereum !== 'undefined') {
+                    await window.ethereum.request({ method: 'eth_requestAccounts' })
+                    this.$notify({
+                        title: '已链接',
+                        message: '已连接至matemask钱包',
+                        type: 'success'
+                    })
+                    this.init()
+                } else {
+                    this.$notify.error({
+                        title: '错误',
+                        message: '该浏览器不支持'
+                    })
+                }
             }
         },
         init() {
-            this.currentAddress = this.$store.state.currentAddress
             this.$store.commit('getCurrentAddress', window.ethereum.selectedAddress)
+            this.currentAddress = this.$store.state.currentAddress
         }
     }
 }
