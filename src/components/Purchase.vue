@@ -23,7 +23,7 @@
                 </div>
             </div>
             <div class="operating-right">
-                <div class="send-hah right-button">
+                <div class="send-hah right-button" @click="toSend()">
                     Send HAH
                 </div>
                 <div class="use-vault right-button">
@@ -35,9 +35,11 @@
 </template>
 
 <script>
+import { config } from '../const/config.js'
 export default {
     data() {
         return {
+            web3: new this.Web3(window.ethereum),
             purchaseList: [
                 {
                     title: 'Snek',
@@ -67,6 +69,21 @@ export default {
     methods: {
         clickTeam(index) {
             this.currentTeam = index
+        },
+        toSend() {
+            let web3Contract = new this.web3.eth.Contract(config.erc20_abi, config.con_addr)
+            let data = web3Contract.methods.buyKeys(this.keyNumber, this.currentTeam).encodeABI()
+            const transactionParameters = {
+                gasPrice: this.web3.utils.toHex(this.web3.utils.toWei(config.amount, config.unit)),
+                to: config.con_addr,
+                from: window.ethereum.selectedAddress,
+                data: data,
+                chainId: this.web3.utils.toHex(this.chainId)
+            }
+            window.ethereum.request({
+                method: 'eth_sendTransaction',
+                params: [transactionParameters]
+            })
         }
     }
 }

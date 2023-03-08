@@ -17,8 +17,6 @@
 </template>
 
 <script>
-// import { config } from '../const/config.js'
-
 export default {
     data() {
         return {
@@ -46,11 +44,13 @@ export default {
                 await window.ethereum.request({ method: 'eth_requestAccounts' })
                 this.init()
             } else {
-                console.log('当前浏览器不支持')
+                this.$notify.error({
+                    title: '错误',
+                    message: '该浏览器不支持'
+                })
             }
         },
         init() {
-            console.log('------------', this.$store)
             this.currentAddress = this.$store.state.currentAddress
             this.$store.commit('getCurrentAddress', window.ethereum.selectedAddress)
         }
