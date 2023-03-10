@@ -30,6 +30,9 @@ export default {
                 }
             ]
         }
+    },
+    mounted() {
+        this.vanityList[0].content = 'fomo3d.net/' + this.$store.state.currentAddress
     }
 }
 </script>

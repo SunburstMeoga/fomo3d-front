@@ -16,10 +16,10 @@
                     Key
                 </div>
                 <div class="left-input">
-                    <input type="number" v-model="keyNumber">
+                    <input type="number" v-model="keyNumber" @change="keysChange($event)">
                 </div>
                 <div class="left-currency">
-                    {{ ehtProportion }} @HAH
+                    {{ numFilter(ehtProportion) }} @HAH
                 </div>
             </div>
             <div class="operating-right">
@@ -36,6 +36,7 @@
 
 <script>
 import { config } from '../const/config.js'
+// import { Loading } from 'element-ui'
 export default {
     data() {
         return {
@@ -44,7 +45,7 @@ export default {
                 {
                     title: 'Snek',
                     image: require('../assets/snek.png'),
-                    value: 0
+                    value: 2
                 },
                 {
                     title: 'Whale',
@@ -54,12 +55,12 @@ export default {
                 {
                     title: 'Bull',
                     image: require('../assets/bull.png'),
-                    value: 0
+                    value: 3
                 },
                 {
                     title: 'Bear',
                     image: require('../assets/bear.png'),
-                    value: 0
+                    value: 1
                 }
             ],
             currentTeam: 0,
@@ -68,12 +69,25 @@ export default {
         }
     },
     mounted() {
-        this.getEthByKey()
+        this.getEthByKey(1)
     },
     methods: {
-        getEthByKey() {
+
+        //  保留四位小数
+        numFilter(value) {
+            // 截取当前数据到小数点后两位
+            let realVal = parseFloat(value).toFixed(4)
+            return realVal
+        },
+        //  购买的keys发生变化
+        keysChange(e) {
+            const { value } = e.target
+            console.log('检测到的变化' + value)
+            this.getEthByKey(value)
+        },
+        getEthByKey(ethByValue) {
             let web3Contract = new this.web3.eth.Contract(config.erc20_abi, config.con_addr)
-            web3Contract.methods.getEthByKeys(1).call().then((result) => {
+            web3Contract.methods.getEthByKeys(ethByValue).call().then((result) => {
                 console.log('当前一个key需要', result, '个wei')
                 this.ehtProportion = this.web3.utils.fromWei(result, 'ether')
             })
@@ -82,18 +96,39 @@ export default {
             this.currentTeam = index
         },
         toSend() {
+            const loading = this.$loading({
+                lock: true,
+                text: 'Loading',
+                spinner: 'el-icon-loading',
+                background: 'rgba(0, 0, 0, 0.7)'
+            })
+
             let web3Contract = new this.web3.eth.Contract(config.erc20_abi, config.con_addr)
             let data = web3Contract.methods.buyKeys(this.keyNumber, this.currentTeam).encodeABI()
-            const transactionParameters = {
+            this.web3.eth.sendTransaction({
                 to: config.con_addr,
                 from: window.ethereum.selectedAddress,
                 data: data,
-                value: this.ethByKey
-            }
-            window.ethereum.request({
-                method: 'eth_sendTransaction',
-                params: [transactionParameters]
+                value: this.web3.utils.toWei(this.ehtProportion, 'ether')
             })
+                .on('confirmation', (confirmationNumber, receipt) => {
+                    console.log(confirmationNumber, receipt)
+                    this.$notify({
+                        title: 'Success',
+                        message: 'Successful bet',
+                        type: 'success'
+                    })
+                    this.keyNumber = 1
+                    this.getEthByKey(this.keyNumber)
+                    loading.close()
+                })
+                .on('error', (error) => {
+                    loading.close()
+                    this.$notify.error({
+                        title: 'Error',
+                        message: error.message
+                    })
+                })
         }
     }
 }
