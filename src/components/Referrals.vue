@@ -4,7 +4,7 @@
             <div class="list-item" v-for="(item, index) in vanityList" :key="index">
                 <div class="item-title">{{ item.title }}</div>
                 <div class="item-content">{{ item.content }}</div>
-                <div class="item-copy">Copy</div>
+                <div class="item-copy" @click="copyWord(item)">Copy</div>
             </div>
         </div>
         <div class="register">Register new name</div>
@@ -18,21 +18,31 @@ export default {
             vanityList: [
                 {
                     title: 'Wallet Referral:',
-                    content: 'fomo3d.net/0x26e3ab522ca04ecdd4139E893F9abfADe7b129bf'
-                },
-                {
-                    title: 'Anonymous Referral:',
-                    content: 'fomo3d.net/'
-                },
-                {
-                    title: 'Vanity Referral:',
-                    content: 'fomo3d.net/'
+                    content: 'HAHBlock.net/-'
                 }
+                // {
+                //     title: 'Anonymous Referral:',
+                //     content: 'HAHBlock.net/'
+                // },
+                // {
+                //     title: 'Vanity Referral:',
+                //     content: 'HAHBlock.net/'
+                // }
             ]
         }
     },
     mounted() {
-        this.vanityList[0].content = 'fomo3d.net/' + this.$store.state.currentAddress
+        this.vanityList[0].content = 'HAH3d.net/' + this.$store.state.currentAddress
+    },
+    methods: {
+        copyWord(item) {
+            navigator.clipboard.writeText(item.content)
+            this.$notify({
+                title: 'Copied',
+                message: 'Copied content to clipboard',
+                type: 'success'
+            })
+        }
     }
 }
 </script>

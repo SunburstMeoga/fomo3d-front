@@ -45,7 +45,6 @@ import Purchase from '../components/Purchase.vue'
 import Valut from '../components/Valut.vue'
 import Referrals from '../components/Referrals.vue'
 import PrizePool from '../components/PrizePool.vue'
-import { config } from '../const/config.js'
 
 export default {
     components: {
@@ -71,7 +70,7 @@ export default {
             targetArr.splice(4, 0, '......')
             targetStr = targetArr.join('')
             return targetStr
-        },
+        }
     }
 }
 </script>
@@ -113,8 +112,8 @@ export default {
 
 .wallet-addres {
     color: #ffbf32;
-    font-size: 24px;
-    font-weight: 500;
+    font-size: 30px;
+    text-align: center;
 }
 
 .purchase {}

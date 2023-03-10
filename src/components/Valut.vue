@@ -6,7 +6,7 @@
                     {{ item.title }}
                 </div>
                 <div class="item-content">
-                    {{ item.content }}
+                    {{ item.content }} HAH
                 </div>
             </div>
         </div>
@@ -18,28 +18,36 @@
 </template>
 
 <script>
+import { config } from '../const/config'
 export default {
     data() {
         return {
             valutList: [
                 {
                     title: 'At Exit(estimated)',
-                    content: '0.0000 HAH'
+                    content: '0.0000'
                 },
                 {
                     title: 'Exit Scammed',
-                    content: '0.0000 HAH'
+                    content: '0.0000'
                 },
                 {
                     title: 'Bad Advice',
-                    content: '0.0000 HAH'
+                    content: '0.0000'
                 },
                 {
                     title: 'Total Gains',
-                    content: '0.0000 HAH'
+                    content: '0.0000'
                 }
-            ]
+            ],
+            web3: new this.Web3(window.ethereum)
         }
+    },
+    mounted() {
+        this.web3.eth.getBalance(config.con_addr).then((res) => {
+            console.log('合约余额', this.web3.utils.fromWei(res, 'ether'))
+            this.valutList[0].content = ((this.web3.utils.fromWei(res, 'ether')) * 1).toFixed(4)
+        })
     }
 }
 </script>
