@@ -3,6 +3,10 @@
         <div class="menu-bar">
             <menu-bar></menu-bar>
         </div>
+        <div class="wallet-addres" v-show="$store.state.currentAddress">
+            <!-- Wallet: {{ addressFilter($store.state.currentAddress) }} -->
+            Wallet: {{ $store.state.currentAddress }}
+        </div>
         <div class="tips">THE ONLY WAY YOU LOSE IN THIS GAME IS IF YOU STOP PLAYING</div>
         <div class="module-title">
             <module-title
@@ -52,18 +56,22 @@ export default {
         Referrals,
         PrizePool
     },
-    data() {
-        return {
-            web3: new this.Web3(window.ethereum)
-        }
-    },
-    mounted() {
-        this.getWeb3()
-    },
     methods: {
-        getWeb3() {
-            console.log(new this.web3.eth.Contract(config.erc20_abi, config.con_addr))
-        }
+        //  钱包地址显示处理
+        addressFilter(value) {
+            if (value === undefined) return
+            let arr = value.split('')
+            let targetStr
+            let targetArr = []
+            arr.map((item, index) => {
+                if (index <= 3 || index >= arr.length - 4) {
+                    targetArr.push(item)
+                }
+            })
+            targetArr.splice(4, 0, '......')
+            targetStr = targetArr.join('')
+            return targetStr
+        },
     }
 }
 </script>
@@ -97,9 +105,16 @@ export default {
     margin: 40px auto 0 auto;
 }
 
-.module-title {
+.module-title,
+.wallet-addres {
     width: 80%;
     margin: 40px auto 0 auto;
+}
+
+.wallet-addres {
+    color: #ffbf32;
+    font-size: 24px;
+    font-weight: 500;
 }
 
 .purchase {}

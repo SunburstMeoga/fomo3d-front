@@ -10,7 +10,7 @@
                 </div>
             </div>
             <div class="connect" @click="login()">
-                {{ currentAddress ? addressFilter(currentAddress) : 'Connect' }}
+                {{ currentAddress ? 'Disconnect' : 'Connect' }}
             </div>
         </div>
     </div>
@@ -39,20 +39,7 @@ export default {
         this.init()
     },
     methods: {
-        //  钱包地址显示处理
-        addressFilter(value) {
-            let arr = value.split('')
-            let targetStr
-            let targetArr = []
-            arr.map((item, index) => {
-                if (index <= 3 || index >= arr.length - 4) {
-                    targetArr.push(item)
-                }
-            })
-            targetArr.splice(4, 0, '......')
-            targetStr = targetArr.join('')
-            return targetStr
-        },
+
         async login() {
             if (!this.currentAddress) {
                 if (typeof window.ethereum !== 'undefined') {
@@ -69,11 +56,14 @@ export default {
                         message: '该浏览器不支持'
                     })
                 }
+            } else {
+
             }
         },
         init() {
             this.$store.commit('getCurrentAddress', window.ethereum.selectedAddress)
             this.currentAddress = this.$store.state.currentAddress
+            console.log(this.currentAddress)
         }
     }
 }
