@@ -142,6 +142,7 @@ export default {
 <style scoped>
 .item-title-clicked {
     color: #EF4444;
+    font-weight: 800;
 }
 
 .item-clicked {
