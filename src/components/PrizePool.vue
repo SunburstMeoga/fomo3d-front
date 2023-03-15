@@ -1,42 +1,43 @@
 <template>
     <div>
-        <div class="py-3">
-            <div class='w-11/12 ml-auto mr-auto text-primary'>
+        <div class="py-3 sm:flex sm:justify-between">
+            <div class='w-11/12 ml-auto mr-auto text-primary sm:w-2/5'>
                 <div class=''>
                     Round #{{ currentRound }}
                 </div>
-                <div class='text-xl font-medium'>
+                <div class='text-xl font-medium sm:font-bold sm:text-3xl'>
                     Contract will drain in
                 </div>
-                <div class='mb-1'>
+                <div class='mb-1 sm:text-xl'>
                     {{ countTime }}
                 </div>
                 <div class='w-full h-0.5 bg-barWhite mb-1'>
                     <div class='bg-primary py-px' :style="{ width: barWidth }"></div>
                 </div>
-                <div>
-                    <div class='flex justify-between text-primary mb-1' v-for='(item, index) in roundList' :key='index'>
-                        <div class='text-sm'>
+                <div class="sm:mt-10">
+                    <div class='flex justify-between text-primary mb-1 sm:mb-2' v-for='(item, index) in roundList'
+                        :key='index'>
+                        <div class='text-sm sm:text-lg'>
                             {{ item.title }}
                         </div>
                         <div class='flex flex-col items-end'>
-                            <div class='text-sm'>
+                            <div class='text-sm sm:text-lg'>
                                 {{ item.content }}
                             </div>
-                            <div class='text-xs'>
+                            <div class='text-xs sm:text-sm'>
                                 {{ item.amount }}
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class='flex flex-wrap justify-around items-center w-11/12 mr-auto ml-auto'>
-                <div class='w-2/5 rounded text-primary flex flex-col items-center justify-center mb-2 bg-teamBg'
+            <div class='flex flex-wrap justify-between items-center w-11/12 mr-auto ml-auto sm:w-2/5 sm:justify-around'>
+                <div class='w-9/20 rounded text-primary flex flex-col items-center justify-center mb-2 bg-teamBg bg-opacity-75 sm:w-2/5'
                     v-for='(item, index) in purchaseList' :key='index'>
                     <div class='text-lg'>
                         {{ item.title }}
                     </div>
-                    <div class='w-full'>
+                    <div class='w-full sm:w-1/2 sm:flex sm:justify-center sm:items-center'>
                         <img :src='item.image' class="w-full" />
                     </div>
                     <div class='text-xl'>

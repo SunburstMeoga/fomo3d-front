@@ -19,6 +19,14 @@ module.exports = {
       'barWhite': '#D1D5DB',
       'teamBg': '#000'
     },
+    extend: {
+      backgroundImage: {
+        'home-main': "url('@/assets/homeBackground.jpg')",
+      },
+      width: {
+        '9/20': '48%'
+      }
+    }
   },
   corePlugins: {},
   plugins: [],

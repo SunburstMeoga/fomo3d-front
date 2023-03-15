@@ -1,9 +1,9 @@
 <template>
-    <div class="">
-        <div class="flex justify-around items-center flex-wrap py-2 px-2 sm:flex-no-wrap">
-            <div class="w-5/12 mb-1 flex flex-col justify-center items-center sm:w-1/4" @click="clickTeam(index)"
+    <div class="py-3">
+        <div class="flex justify-around items-center flex-wrap px-2 sm:flex-no-wrap">
+            <div class="w-5/12 mb-1 flex flex-col justify-center items-center sm:w-56" @click="clickTeam(index)"
                 v-for="(item, index) in purchaseList" :key="index">
-                <div class="w-9/12" :class="currentTeam === index ? 'text-primary' : ''">
+                <div class="w-9/12 rounded-full" :class="currentTeam === index ? 'item-clicked' : ''">
                     <img :src="item.image" class="w-full" />
                 </div>
                 <div class="text-base text-text" :class="currentTeam === index ? 'item-title-clicked' : ''">
@@ -11,24 +11,26 @@
                 </div>
             </div>
         </div>
-        <div class="w-11/12 mr-auto ml-auto">
-            <div class="flex justify-between items-center text-primary">
-                <div class="text-lg">
+        <div class="w-11/12 mr-auto ml-auto sm:flex sm:bg-primary sm:rounded-full sm:h-12 sm:justify-between sm:px-10">
+            <div class="flex justify-between items-center text-primary sm:text-text sm:w-2/4 sm:justify-start">
+                <div class="text-lg sm:mr-6">
                     Key
                 </div>
-                <div class="w-2/4 h-8">
-                    <input type="number" class="rounded-full border-none text-center h-full w-full" v-model="keyNumber"
-                        @change="keysChange($event)">
+                <div class="w-2/4 h-8 sm:mr-6">
+                    <input type="number" class="rounded-full border-none text-center h-full w-full sm:text-primary"
+                        v-model="keyNumber" @change="keysChange($event)">
                 </div>
                 <div class="text-lg">
                     {{ numFilter(ehtProportion) }} @HAH
                 </div>
             </div>
             <div class="flex justify-between items-center py-4">
-                <div class="border-primary text-lg border rounded-full px-6 py-1 text-primary" @click="toSend()">
+                <div class="border-primary text-lg border rounded-full px-6 py-1 text-primary sm:border-text sm:text-text"
+                    @click="toSend()">
                     Send HAH
                 </div>
-                <div class="border-primary text-lg border rounded-full px-6 py-1 text-primary">
+                <div
+                    class="border-primary text-lg border rounded-full px-6 py-1 text-primary sm:border-text sm:text-text sm:ml-6">
                     Use Valut
                 </div>
             </div>
@@ -96,6 +98,7 @@ export default {
         },
         clickTeam(index) {
             this.currentTeam = index
+            console.log('current', index)
         },
         toSend() {
             const loading = this.$loading({
@@ -136,4 +139,12 @@ export default {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.item-title-clicked {
+    color: #EF4444;
+}
+
+.item-clicked {
+    background: #EF4444;
+}
+</style>

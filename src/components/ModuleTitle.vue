@@ -1,6 +1,6 @@
 <template>
-    <div class="text-primary w-11/12 mr-auto ml-auto sm:flex sm:items-baseline sm:text-3xl">
-        <div class="text-2xl font-medium">
+    <div class="text-primary w-11/12 mr-auto ml-auto sm:flex sm:items-baseline sm:w-10/12">
+        <div class="text-2xl font-medium sm:text-3xl">
             {{ titleWord }}
         </div>
         <div class="leading-4 text-xs sm:pl-2 sm:text-lg">

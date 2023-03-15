@@ -1,10 +1,11 @@
 <template>
     <div class="py-3">
         <div>
-            <div class="flex justify-between items-center text-sm text-primary mb-3 w-11/12 ml-auto mr-auto"
+            <div class="flex justify-between items-center text-sm text-primary mb-3 w-11/12 ml-auto mr-auto sm:text-lg"
                 v-for="(item, index) in vanityList" :key="index">
                 <div class="truncate">{{ item.title }} {{ item.content }}</div>
-                <div class="border-primary text-sm border rounded text-center px-2 text-primary" @click="copyWord(item)">
+                <div class="border-primary text-sm border rounded text-center px-2 text-primary sm:py-2 sm:px-6 sm:text-lg"
+                    @click="copyWord(item)">
                     Copy</div>
             </div>
         </div>
