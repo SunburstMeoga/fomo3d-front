@@ -1,13 +1,15 @@
 <template>
-    <div class="vanity">
-        <div class="vanity-list">
-            <div class="list-item" v-for="(item, index) in vanityList" :key="index">
-                <div class="item-title">{{ item.title }}</div>
-                <div class="item-content">{{ item.content }}</div>
-                <div class="item-copy" @click="copyWord(item)">Copy</div>
+    <div class="py-3">
+        <div>
+            <div class="flex justify-between items-center text-sm text-primary mb-3 w-11/12 ml-auto mr-auto"
+                v-for="(item, index) in vanityList" :key="index">
+                <div class="truncate">{{ item.title }} {{ item.content }}</div>
+                <div class="border-primary text-sm border rounded text-center px-2 text-primary" @click="copyWord(item)">
+                    Copy</div>
             </div>
         </div>
-        <div class="register">Register new name</div>
+        <div class="border-primary text-lg border rounded-full  w-11/12 ml-auto mr-auto text-center px-6 py-1 text-primary">
+            Register new name</div>
     </div>
 </template>
 
@@ -47,53 +49,4 @@ export default {
 }
 </script>
 
-<style scoped>
-.vanity {
-    width: 100%;
-    padding-top: 20px;
-}
-
-.list-item {
-    width: 90%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 0 auto 20px auto;
-    font-size: 20px;
-}
-
-.item-title {
-    font-size: 20px;
-    color: white;
-    width: 20%;
-}
-
-.item-content {
-    text-align: left;
-    text-indent: 20px;
-    color: #ffbf32;
-    flex: 1;
-}
-
-.item-copy {
-    padding: 4px 12px;
-    font-size: 14px;
-    font-weight: 500;
-    border: 1px solid #ffbf32;
-    color: #ffbf32;
-    cursor: pointer;
-    border-radius: 4px;
-}
-
-.register {
-    height: 40px;
-    width: 90%;
-    margin: 0 auto;
-    border-radius: 40px;
-    border: 2px solid #ffbf32;
-    cursor: pointer;
-    text-align: center;
-    line-height: 40px;
-    color: #ffbf32;
-}
-</style>
+<style scoped></style>

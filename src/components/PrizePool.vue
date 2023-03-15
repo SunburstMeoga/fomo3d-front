@@ -1,44 +1,45 @@
 <template>
-    <div class='pool-container'>
-        <div class='content'>
-            <div class='round'>
-                <div class='round-num'>
+    <div>
+        <div class="py-3">
+            <div class='w-11/12 ml-auto mr-auto text-primary'>
+                <div class=''>
                     Round #{{ currentRound }}
                 </div>
-                <div class='round-drain'>
+                <div class='text-xl font-medium'>
                     Contract will drain in
                 </div>
-                <div class='round-time'>
+                <div class='mb-1'>
                     {{ countTime }}
                 </div>
-                <div class='progress-bar'>
-                    <div class='bar-long' :style="{ width: barWidth }"></div>
+                <div class='w-full h-0.5 bg-barWhite mb-1'>
+                    <div class='bg-primary py-px' :style="{ width: barWidth }"></div>
                 </div>
-                <div class='round-list'>
-                    <div class='round-item' v-for='(item, index) in roundList' :key='index'>
-                        <div class='item-title'>
+                <div>
+                    <div class='flex justify-between text-primary mb-1' v-for='(item, index) in roundList' :key='index'>
+                        <div class='text-sm'>
                             {{ item.title }}
                         </div>
-                        <div class='item-content'>
-                            <div class='content-top'>
+                        <div class='flex flex-col items-end'>
+                            <div class='text-sm'>
                                 {{ item.content }}
                             </div>
-                            <div class='content-bottom'>
+                            <div class='text-xs'>
                                 {{ item.amount }}
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class='teams'>
-                <div class='teams-item' v-for='(item, index) in purchaseList' :key='index'>
-                    <div class='teams-title'>
+            <div class='flex flex-wrap justify-around items-center w-11/12 mr-auto ml-auto'>
+                <div class='w-2/5 rounded text-primary flex flex-col items-center justify-center mb-2 bg-teamBg'
+                    v-for='(item, index) in purchaseList' :key='index'>
+                    <div class='text-lg'>
                         {{ item.title }}
                     </div>
-                    <div class='teams-img'>
-                        <img :src='item.image' />
+                    <div class='w-full'>
+                        <img :src='item.image' class="w-full" />
                     </div>
-                    <div class='teams-hah'>
+                    <div class='text-xl'>
                         {{ item.value }} HAH
                     </div>
                 </div>
@@ -170,130 +171,4 @@ export default {
 }
 </script>
 
-<style scoped>
-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.pool-container {
-    width: 100%;
-    padding-top: 20px;
-}
-
-.content {
-    width: 90%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 0 auto;
-}
-
-.round {
-    width: 50%;
-    color: #ffbf32;
-}
-
-.round-num,
-.round-time {
-    font-size: 16px;
-    font-weight: 500;
-}
-
-.round-drain {
-    font-size: 24px;
-    font-weight: 600;
-    margin: 20px 0 20px 0;
-}
-
-.round-time {
-    margin-bottom: 10px;
-}
-
-.progress-bar {
-    width: 100%;
-    height: 3px;
-    background: #000;
-    margin-bottom: 20px;
-}
-
-.bar-long {
-    height: 2px;
-    width: 0;
-    background: #ffbf32;
-}
-
-.round-list {}
-
-.round-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    color: #fff;
-    margin-bottom: 10px;
-}
-
-.item-title {
-    font-size: 20px;
-    font-weight: 500px;
-}
-
-.item-content {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    color: #ffbf32;
-}
-
-.content-top {
-    font-size: 20px;
-    font-weight: 500px;
-}
-
-.content-bottom {
-    font-size: 14px;
-    color: orchid;
-}
-
-.item-title {
-    font-size: 16px;
-    font-weight: 500;
-    color: white;
-}
-
-.itme-content {}
-
-.teams {
-    width: 40%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-
-.teams-item {
-    background: #212529;
-    width: 48%;
-    padding: 10px 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 20px;
-    border-radius: 6px;
-}
-
-.teams-title,
-.teams-hah {
-    color: #ffbf32;
-    font-size: 14px;
-    font-weight: 500;
-}
-
-.teams-img {
-    width: 100px;
-}
-
-.teams-hah {
-    font-size: 20px;
-}
-</style>
+<style scoped></style>

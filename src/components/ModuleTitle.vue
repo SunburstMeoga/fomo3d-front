@@ -1,9 +1,9 @@
 <template>
-    <div class="title-container">
-        <div class="first-title">
+    <div class="text-primary w-11/12 mr-auto ml-auto sm:flex sm:items-baseline sm:text-3xl">
+        <div class="text-2xl font-medium">
             {{ titleWord }}
         </div>
-        <div class="second-title">
+        <div class="leading-4 text-xs sm:pl-2 sm:text-lg">
             {{ secondTitle }}
         </div>
     </div>
@@ -24,20 +24,4 @@ export default {
 }
 </script>
 
-<style scoped>
-.title-container {
-    display: flex;
-    justify-content: flex-start;
-    align-items: baseline;
-    color: #ffbf32;
-}
-
-.first-title {
-    font-size: 30px;
-}
-
-.second-title {
-    text-indent: 20px;
-    font-size: 16px;
-}
-</style>
+<style scoped></style>

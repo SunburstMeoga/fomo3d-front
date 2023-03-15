@@ -1,7 +1,8 @@
 <template>
-    <div class="valut-container">
-        <div class="valut-list">
-            <div class="valut-item" v-for="(item, index) in valutList" :key="index">
+    <div class="py-3">
+        <div>
+            <div class="flex justify-between items-center text-lg text-primary mb-3 w-11/12 ml-auto mr-auto"
+                v-for="(item, index) in valutList" :key="index">
                 <div class="item-title">
                     {{ item.title }}
                 </div>
@@ -10,8 +11,8 @@
                 </div>
             </div>
         </div>
-        <div class="usd">0 USD</div>
-        <div class="valut-withdraw">
+        <div class="text-right text-2xl w-11/12 ml-auto mr-auto text-primary">0 USD</div>
+        <div class="border-primary text-lg border rounded-full  w-11/12 ml-auto mr-auto text-center px-6 py-1 text-primary">
             Withdraw
         </div>
     </div>
@@ -52,50 +53,4 @@ export default {
 }
 </script>
 
-<style scoped>
-.valut-container {
-    width: 100%;
-    padding-top: 20px;
-}
-
-.valut-list {}
-
-.valut-item {
-    width: 90%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 0 auto 20px auto;
-    font-size: 20px;
-}
-
-.valut-withdraw,
-.usd {
-    width: 90%;
-    color: #ffbf32;
-    margin: 0 auto;
-}
-
-.usd {
-    font-size: 30px;
-    text-align: right;
-    margin-bottom: 10px;
-}
-
-.valut-withdraw {
-    height: 40px;
-    border-radius: 40px;
-    border: 2px solid #ffbf32;
-    cursor: pointer;
-    text-align: center;
-    line-height: 40px;
-}
-
-.item-title {
-    color: #fff;
-}
-
-.item-content {
-    color: #ffbf32;
-}
-</style>
+<style scoped></style>
