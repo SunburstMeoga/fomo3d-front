@@ -7,6 +7,7 @@ import Web3 from 'web3'
 import store from './store'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
+import '@/assets/css/tailwind.css'
 
 Vue.use(ElementUI)
 
