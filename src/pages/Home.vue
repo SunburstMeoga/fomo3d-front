@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-cover pb-4 bg-fixed bg-no-repeat bg-center home-main">
+    <div class="bg-cover pb-4 bg-fixed bg-no-repeat min-h-screen bg-center home-main">
         <menu-bar></menu-bar>
         <div class="text-primary w-11/12 mr-auto ml-auto truncate sm:text-3xl sm:mt-8 sm:w-10/12"
             v-show="$store.state.currentAddress">
@@ -15,12 +15,19 @@
             IS IF YOU
             STOP PLAYING
         </div>
-        <module-title
-            secondTitle="Purchases of .1 HAH or more have a 1% chance to win some of the 0 HAH airdrop pot, instantly!"></module-title>
+        <div v-if="$store.state.walletInfo.address && $store.state.chainId === '0x539'">
+            <module-title titleWord="Account Information"></module-title>
+            <div class="bg-moduleBg bg-opacity-75 mt-2 mr-auto ml-auto mb-2 w-11/12 rounded sm:w-10/12">
+                <account />
+            </div>
+        </div>
+
+        <module-title secondTitle="Buy a certain number of keys to increase the time of the countdown clock"></module-title>
         <div class="bg-moduleBg bg-opacity-75 mt-2 mr-auto ml-auto mb-2 w-11/12 rounded sm:w-10/12">
             <purchase></purchase>
         </div>
-        <module-title titleWord="Valut"></module-title>
+
+        <!--  <module-title titleWord="Valut"></module-title>
         <div class="bg-moduleBg bg-opacity-75 mt-2 mr-auto ml-auto mb-2 w-11/12 rounded sm:w-10/12">
             <valut></valut>
         </div>
@@ -28,8 +35,8 @@
             secondTitle="Advise others to invest in this exit scam and we'll reward you 10% of everything they lose. In HAH"></module-title>
         <div class="bg-moduleBg bg-opacity-75 mt-2 mr-auto ml-auto mb-2 w-11/12 rounded sm:w-10/12">
             <referrals></referrals>
-        </div>
-        <module-title titleWord="Round & Teams"></module-title>
+        </div> -->
+        <module-title titleWord="Round Information"></module-title>
         <div class="bg-moduleBg bg-opacity-75 mt-2 mr-auto ml-auto mb-2 w-11/12 rounded sm:w-10/12">
             <prize-pool></prize-pool>
         </div>
@@ -44,6 +51,8 @@ import Purchase from '../components/Purchase.vue'
 import Valut from '../components/Valut.vue'
 import Referrals from '../components/Referrals.vue'
 import PrizePool from '../components/PrizePool.vue'
+import Account from '../components/Account'
+import { config } from '../const/config.js'
 
 export default {
     components: {
@@ -52,25 +61,10 @@ export default {
         Purchase,
         Valut,
         Referrals,
-        PrizePool
+        PrizePool,
+        Account
     },
-    methods: {
-        //  钱包地址显示处理
-        addressFilter(value) {
-            if (value === undefined) return
-            let arr = value.split('')
-            let targetStr
-            let targetArr = []
-            arr.map((item, index) => {
-                if (index <= 3 || index >= arr.length - 4) {
-                    targetArr.push(item)
-                }
-            })
-            targetArr.splice(4, 0, '......')
-            targetStr = targetArr.join('')
-            return targetStr
-        }
-    }
+
 }
 </script>
 

@@ -1,6 +1,6 @@
 <template>
     <div class="py-3">
-        <div class="flex justify-around items-center flex-wrap px-2 sm:flex-no-wrap">
+        <!-- <div class="flex justify-around items-center flex-wrap px-2 sm:flex-no-wrap">
             <div class="w-5/12 mb-1 flex flex-col justify-center items-center sm:w-56" @click="clickTeam(index)"
                 v-for="(item, index) in purchaseList" :key="index">
                 <div class="w-9/12 rounded-full" :class="currentTeam === index ? 'item-clicked' : ''">
@@ -10,7 +10,7 @@
                     {{ item.title }}
                 </div>
             </div>
-        </div>
+        </div> -->
         <div class="w-11/12 mr-auto ml-auto sm:flex sm:bg-primary sm:rounded-full sm:h-12 sm:justify-between sm:px-10">
             <div class="flex justify-between items-center text-primary sm:text-text sm:w-2/4 sm:justify-start">
                 <div class="text-lg sm:mr-6">
@@ -21,30 +21,31 @@
                         v-model="keyNumber" @change="keysChange($event)">
                 </div>
                 <div class="text-lg">
-                    {{ numFilter(ehtProportion) }} @HAH
+                    {{ numFilter(ethProportion) }} @HAH
                 </div>
             </div>
             <div class="flex justify-between items-center py-4">
-                <div class="border-primary text-lg border rounded-full px-6 py-1 text-primary sm:border-text sm:text-text"
+                <div class="border-primary w-full text-lg border rounded-full text-center py-1 text-primary sm:border-text sm:text-text"
                     @click="toSend()">
                     Send HAH
                 </div>
-                <div
+                <!-- <div
                     class="border-primary text-lg border rounded-full px-6 py-1 text-primary sm:border-text sm:text-text sm:ml-6">
                     Use Valut
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
 </template>
 
 <script>
-import { config } from '../const/config.js'
 // import { Loading } from 'element-ui'
+import { config } from '../const/config'
+
 export default {
     data() {
         return {
-            web3: new this.Web3(window.ethereum),
+            // web3: new this.Web3(window.ethereum),
             purchaseList: [
                 {
                     title: 'Snek',
@@ -69,7 +70,7 @@ export default {
             ],
             currentTeam: 0,
             keyNumber: 1,
-            ehtProportion: 0
+            ethProportion: 0
         }
     },
     mounted() {
@@ -90,10 +91,10 @@ export default {
             this.getEthByKey(value)
         },
         getEthByKey(ethByValue) {
-            let web3Contract = new this.web3.eth.Contract(config.erc20_abi, config.con_addr)
-            web3Contract.methods.getEthByKeys(ethByValue).call().then((result) => {
+            let web3Contract = new this.Web3.eth.Contract(config.erc20_abi, config.con_addr)
+            web3Contract.methods.calculateKeyPrice(ethByValue).call().then((result) => {
                 console.log('当前一个key需要', result, '个wei')
-                this.ehtProportion = this.web3.utils.fromWei(result, 'ether')
+                this.ethProportion = this.Web3.utils.fromWei(result, 'ether')
             })
         },
         clickTeam(index) {
@@ -108,13 +109,15 @@ export default {
                 background: 'rgba(0, 0, 0, 0.7)'
             })
 
-            let web3Contract = new this.web3.eth.Contract(config.erc20_abi, config.con_addr)
-            let data = web3Contract.methods.buyKeys(this.keyNumber, this.currentTeam).encodeABI()
-            this.web3.eth.sendTransaction({
+            let web3Contract = new this.Web3.eth.Contract(config.erc20_abi, config.con_addr)
+            let data = web3Contract.methods.buyKeys(this.keyNumber, window.ethereum.selectedAddress,).encodeABI()
+            // console.log('this.ethProportion', this.ethProportion)
+            // return
+            this.Web3.eth.sendTransaction({
                 to: config.con_addr,
                 from: window.ethereum.selectedAddress,
                 data: data,
-                value: this.web3.utils.toWei(this.ehtProportion, 'ether')
+                value: this.Web3.utils.toWei(this.ethProportion, 'ether')
             })
                 .on('confirmation', (confirmationNumber, receipt) => {
                     console.log(confirmationNumber, receipt)

@@ -12,7 +12,7 @@ module.exports = {
     //   xl: '1280px',
     // },
     colors: {
-      'primary': '#EF4444',
+      'primary': '#DA251D',
       'secondary': '#F87171',
       'text': '#D1D5DB',
       'moduleBg': '#191c22',

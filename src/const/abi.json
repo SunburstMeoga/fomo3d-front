@@ -2,14 +2,198 @@
     {
         "inputs": [
             {
+                "internalType": "address payable",
+                "name": "_platformAddress",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "nonpayable",
+        "type": "constructor"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": true,
+                "internalType": "address",
+                "name": "buyer",
+                "type": "address"
+            },
+            {
+                "indexed": false,
                 "internalType": "uint256",
-                "name": "value",
+                "name": "amount",
                 "type": "uint256"
             },
             {
-                "internalType": "uint8",
-                "name": "team",
-                "type": "uint8"
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "numKeys",
+                "type": "uint256"
+            },
+            {
+                "indexed": true,
+                "internalType": "address",
+                "name": "inviter",
+                "type": "address"
+            }
+        ],
+        "name": "KeyPurchased",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": false,
+                "internalType": "address",
+                "name": "account",
+                "type": "address"
+            }
+        ],
+        "name": "Paused",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "roundNumber",
+                "type": "uint256"
+            }
+        ],
+        "name": "RoundEnded",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": false,
+                "internalType": "address",
+                "name": "account",
+                "type": "address"
+            }
+        ],
+        "name": "Unpaused",
+        "type": "event"
+    },
+    {
+        "inputs": [],
+        "name": "BASE_KEY_PRICE",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "MAX_KEYS_PER_PURCHASE",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "TIMER_INCREMENT",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "accumulatedHolderPrizeShare",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "name": "accumulatedInviterShares",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "name": "accumulatedNewPlayerShares",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "accumulatedPlatformShare",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "numKeys",
+                "type": "uint256"
+            },
+            {
+                "internalType": "address payable",
+                "name": "inviter",
+                "type": "address"
             }
         ],
         "name": "buyKeys",
@@ -18,66 +202,14 @@
         "type": "function"
     },
     {
-        "inputs": [],
-        "stateMutability": "nonpayable",
-        "type": "constructor"
-    },
-    {
-        "inputs": [],
-        "name": "withdraw1",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "inputs": [],
-        "name": "withdraw2",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
         "inputs": [
             {
                 "internalType": "uint256",
-                "name": "value",
+                "name": "numKeys",
                 "type": "uint256"
             }
         ],
-        "name": "withdrawPlatformPool",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "inputs": [
-            {
-                "internalType": "uint256",
-                "name": "value",
-                "type": "uint256"
-            }
-        ],
-        "name": "withdrawPool",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "inputs": [],
-        "name": "epoch",
-        "outputs": [
-            {
-                "internalType": "uint256",
-                "name": "",
-                "type": "uint256"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "inputs": [],
-        "name": "eth_v",
+        "name": "calculateKeyPrice",
         "outputs": [
             {
                 "internalType": "uint256",
@@ -92,16 +224,16 @@
         "inputs": [
             {
                 "internalType": "uint256",
-                "name": "v",
+                "name": "",
                 "type": "uint256"
             }
         ],
-        "name": "getEthByKeys",
+        "name": "keyHolderAddresses",
         "outputs": [
             {
-                "internalType": "uint256",
+                "internalType": "address",
                 "name": "",
-                "type": "uint256"
+                "type": "address"
             }
         ],
         "stateMutability": "view",
@@ -115,30 +247,7 @@
                 "type": "address"
             }
         ],
-        "name": "infos",
-        "outputs": [
-            {
-                "internalType": "uint256",
-                "name": "balance",
-                "type": "uint256"
-            },
-            {
-                "internalType": "uint8",
-                "name": "team",
-                "type": "uint8"
-            },
-            {
-                "internalType": "uint256",
-                "name": "epoch",
-                "type": "uint256"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "inputs": [],
-        "name": "keyOwnPool",
+        "name": "keyHolders",
         "outputs": [
             {
                 "internalType": "uint256",
@@ -151,7 +260,7 @@
     },
     {
         "inputs": [],
-        "name": "keysTotal",
+        "name": "lastBuyTimestamp",
         "outputs": [
             {
                 "internalType": "uint256",
@@ -164,7 +273,26 @@
     },
     {
         "inputs": [],
-        "name": "nextRound",
+        "name": "lastBuyer",
+        "outputs": [
+            {
+                "internalType": "address payable",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "x",
+                "type": "uint256"
+            }
+        ],
+        "name": "log10",
         "outputs": [
             {
                 "internalType": "uint256",
@@ -172,15 +300,47 @@
                 "type": "uint256"
             }
         ],
+        "stateMutability": "pure",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "x",
+                "type": "uint256"
+            }
+        ],
+        "name": "log2",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "y",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "pure",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "paused",
+        "outputs": [
+            {
+                "internalType": "bool",
+                "name": "",
+                "type": "bool"
+            }
+        ],
         "stateMutability": "view",
         "type": "function"
     },
     {
         "inputs": [],
-        "name": "owner",
+        "name": "platformAddress",
         "outputs": [
             {
-                "internalType": "address",
+                "internalType": "address payable",
                 "name": "",
                 "type": "address"
             }
@@ -190,7 +350,7 @@
     },
     {
         "inputs": [],
-        "name": "platformPool",
+        "name": "pot",
         "outputs": [
             {
                 "internalType": "uint256",
@@ -203,7 +363,7 @@
     },
     {
         "inputs": [],
-        "name": "pool",
+        "name": "roundCount",
         "outputs": [
             {
                 "internalType": "uint256",
@@ -216,25 +376,12 @@
     },
     {
         "inputs": [],
-        "name": "roundTime",
+        "name": "totalKeysSold",
         "outputs": [
             {
                 "internalType": "uint256",
                 "name": "",
                 "type": "uint256"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "inputs": [],
-        "name": "winner",
-        "outputs": [
-            {
-                "internalType": "address",
-                "name": "",
-                "type": "address"
             }
         ],
         "stateMutability": "view",

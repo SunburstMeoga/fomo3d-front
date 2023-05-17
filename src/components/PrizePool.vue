@@ -12,7 +12,7 @@
                     {{ countTime }}
                 </div>
                 <div class='w-full h-0.5 bg-barWhite mb-1'>
-                    <div class='bg-primary py-px' :style="{ width: barWidth }"></div>
+                    <!-- <div class='bg-primary py-px' :style="{ width: barWidth }"></div> -->
                 </div>
                 <div class="sm:mt-10">
                     <div class='flex justify-between text-primary mb-1 sm:mb-2' v-for='(item, index) in roundList'
@@ -31,7 +31,7 @@
                     </div>
                 </div>
             </div>
-            <div class='flex flex-wrap justify-between items-center w-11/12 mr-auto ml-auto sm:w-2/5 sm:justify-around'>
+            <!-- <div class='flex flex-wrap justify-between items-center w-11/12 mr-auto ml-auto sm:w-2/5 sm:justify-around'>
                 <div class='w-9/20 rounded text-primary flex flex-col items-center justify-center mb-2 bg-teamBg bg-opacity-75 sm:w-2/5'
                     v-for='(item, index) in purchaseList' :key='index'>
                     <div class='text-lg'>
@@ -44,29 +44,36 @@
                         {{ item.value }} HAH
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 </template>
 
 <script>
-import { config } from '../const/config.js'
+import { config } from '../const/config'
+import { addressFilter } from '@/utils/format'
+
 export default {
     data() {
         return {
             roundList: [
                 {
-                    title: 'Active Pot:',
-                    content: 'loading...',
+                    title: 'Last Buyer:',
+                    content: '-',
                     amount: '0 USD'
                 },
                 {
-                    title: 'Your Keys:',
+                    title: 'Pot:',
                     content: '0.00 Keys',
                     amount: 'Total 0 Keys'
                 },
                 {
-                    title: 'Your Earnings:',
+                    title: 'Total Keys Sold:',
+                    content: '0.0000 HAH',
+                    amount: '0 USD'
+                },
+                {
+                    title: 'Round Count:',
                     content: '0.0000 HAH',
                     amount: '0 USD'
                 }
@@ -93,7 +100,7 @@ export default {
                     value: 0
                 }
             ],
-            web3: new this.Web3(window.ethereum),
+            // web3: new this.Web3(window.ethereum),
             currentRound: '-',
             countTime: 'Loading...',
             timer: null,
@@ -101,22 +108,23 @@ export default {
         }
     },
     computed: {
-        barWidth() {
-            return this.barLongPoint + '%'
-        }
+        // barWidth() {
+        //     return this.barLongPoint + '%'
+        // }
     },
     mounted() {
         this.getInfo()
-        this.web3.eth.getBalance(this.$store.state.currentAddress).then((res) => {
-            console.log('余额', this.web3.utils.fromWei(res, 'ether'))
-            this.roundList[2].content = ((this.web3.utils.fromWei(res, 'ether')) * 1).toFixed(4)
-        })
+        // this.web3.eth.getBalance(this.$store.state.currentAddress).then((res) => {
+        //     console.log('余额', this.web3.utils.fromWei(res, 'ether'))
+        //     this.roundList[2].content = ((this.web3.utils.fromWei(res, 'ether')) * 1).toFixed(4)
+        // })
     },
     beforeDestroy() {
         clearInterval(this.timer)
     },
 
     methods: {
+        addressFilter,
         countDown(endTimeStamp) {
             var nowTimeStamp = new Date().getTime()
             var time = {}
@@ -148,24 +156,33 @@ export default {
             this.barLongPoint = (((time.hour * 60 * 60 + minutes * 60 + seconds) / 86400).toFixed(4)) * 100
         },
         getInfo() {
-            let web3Contract = new this.web3.eth.Contract(config.erc20_abi, config.con_addr)
-            web3Contract.methods.infos(this.$store.state.currentAddress).call().then((result) => {
-                console.log('用户拥有的key：', result)
-                this.roundList[1].content = result.balance + ' Keys'
+            // console.log(new this.Web3.eth.Contract(config.erc20_abi, config.con_addr))
+            // return
+            let web3Contract = new this.Web3.eth.Contract(config.erc20_abi, config.con_addr)
+            web3Contract.methods.lastBuyer().call().then((result) => {
+                console.log('lastBuyer:', result)
+                this.roundList[0].content = this.addressFilter(result)
             })
-            web3Contract.methods.keysTotal().call().then((result) => {
-                console.log('所有的keys', result)
-                this.roundList[1].amount = 'Total ' + result + '  Keys'
-            })
-            web3Contract.methods.roundTime().call().then((result) => {
-                console.log('倒计时时间戳', result)
+            web3Contract.methods.lastBuyTimestamp().call().then((result) => {
+                console.log('lastBuyTimestamp:', result)
                 this.timer = setInterval(() => {
                     this.countDown(result * 1000)
                 }, 1000)
             })
-            web3Contract.methods.nextRound().call().then((result) => {
-                console.log('当前回合', result)
-                this.currentRound = result
+            web3Contract.methods.pot().call().then((result) => {
+                console.log('pot:', result)
+                this.roundList[1].content = result + 'HAH'
+
+            })
+            web3Contract.methods.totalKeysSold().call().then((result) => {
+                console.log('totalKeysSold:', result)
+                this.roundList[2].content = result + 'HAH'
+
+            })
+            web3Contract.methods.roundCount().call().then((result) => {
+                console.log('roundCount:', result)
+                this.roundList[3].content = result + 'HAH'
+
             })
         }
     }

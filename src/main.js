@@ -4,6 +4,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import Web3 from 'web3'
+import { config } from './const/config'
 import store from './store'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
@@ -11,7 +12,9 @@ import '@/assets/css/tailwind.css'
 
 Vue.use(ElementUI)
 
-Vue.prototype.Web3 = Web3
+Vue.prototype.Web3 = new Web3(window.ethereum)
+Vue.prototype.Config = config
+
 
 Vue.config.productionTip = false
 
