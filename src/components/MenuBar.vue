@@ -10,6 +10,8 @@
                 </div>
             </div> -->
             <div class="px-2 py-1 text-primary rounded-sm border-primary border" @click="handleConnect()">
+                <!-- {{ $store.state.walletInfo.address }}
+                {{ $store.state.chainId }} -->
                 {{ $store.state.walletInfo.address && $store.state.chainId === '0x539' ? 'Disconnect' : 'Connect' }}
             </div>
         </div>
@@ -49,7 +51,8 @@ export default {
                     method: 'eth_requestAccounts'
                 })
                 this.getWalletBalance(accounts[0])
-                console.log('accounts', accounts)
+                localStorage.setItem('connectStatus', 'connect')
+                console.log('store', this.$store.state.walletInfo)
             } catch (error) {
                 console.error(error)
             }
@@ -76,7 +79,6 @@ export default {
             localStorage.removeItem('walletInfo')
             // localStorage.removeItem('earningsInfo')
             localStorage.setItem('connectStatus', 'disconnect')
-            this.isConnect = false
             this.$store.commit('getWalletInfo', {})
         },
         handleConnect() {

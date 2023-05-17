@@ -1,10 +1,7 @@
 <template>
     <div class="bg-cover pb-4 bg-fixed bg-no-repeat min-h-screen bg-center home-main">
         <menu-bar></menu-bar>
-        <div class="text-primary w-11/12 mr-auto ml-auto truncate sm:text-3xl sm:mt-8 sm:w-10/12"
-            v-show="$store.state.currentAddress">
-            Wallet: {{ $store.state.currentAddress }}
-        </div>
+
         <div
             class="p-2 text-text bg-primary text-sm w-11/12 mr-auto ml-auto rounded text-center mb-4 mt-4 sm:text-2xl sm:mb-8 sm:mt-8 sm:w-10/12">
             THE

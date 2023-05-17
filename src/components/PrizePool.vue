@@ -12,7 +12,7 @@
                     {{ countTime }}
                 </div>
                 <div class='w-full h-0.5 bg-barWhite mb-1'>
-                    <!-- <div class='bg-primary py-px' :style="{ width: barWidth }"></div> -->
+                    <div class='bg-primary py-px' :style="{ width: barWidth }"></div>
                 </div>
                 <div class="sm:mt-10">
                     <div class='flex justify-between text-primary mb-1 sm:mb-2' v-for='(item, index) in roundList'
@@ -21,12 +21,21 @@
                             {{ item.title }}
                         </div>
                         <div class='flex flex-col items-end'>
-                            <div class='text-sm sm:text-lg'>
-                                {{ item.content }}
+                            <div class='text-sm flex justify-start items-center sm:text-lg'>
+
+                                <div>
+                                    {{ item.content || '0x6ee9d9915aedfc3699291ce3935e6806ee57843c' }}
+                                </div>
+                                <div v-if="index === 0"
+                                    class="border border-primary rounded-2xl px-2 text-sm text-primary ml-2"
+                                    @click="copyContent(item.content)">
+                                    Copy
+                                </div>
                             </div>
                             <div class='text-xs sm:text-sm'>
                                 {{ item.amount }}
                             </div>
+
                         </div>
                     </div>
                 </div>
@@ -108,9 +117,9 @@ export default {
         }
     },
     computed: {
-        // barWidth() {
-        //     return this.barLongPoint + '%'
-        // }
+        barWidth() {
+            return this.barLongPoint + '%'
+        }
     },
     mounted() {
         this.getInfo()
@@ -125,6 +134,22 @@ export default {
 
     methods: {
         addressFilter,
+        copyContent(content) {
+            if (!content) return
+            navigator.clipboard.writeText(content).then(() => {
+                this.$notify({
+                    title: 'Success',
+                    message: 'Copy Succeeded',
+                    type: 'success'
+                })
+            }, () => {
+                // this.$message.error(this.$t('message.fail'));
+                this.$notify.error({
+                    title: 'Error',
+                    message: error.message
+                })
+            });
+        },
         countDown(endTimeStamp) {
             var nowTimeStamp = new Date().getTime()
             var time = {}
