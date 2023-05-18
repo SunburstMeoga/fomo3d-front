@@ -25,7 +25,7 @@
                 </div>
             </div>
             <div class="flex justify-between items-center py-4">
-                <div class="border-primary w-full text-lg border rounded-full text-center py-1 text-primary sm:border-text sm:text-text"
+                <div class="border-primary w-full text-lg border rounded-full text-center py-1 text-primary sm:border-text sm:text-text sm:px-20"
                     @click="toSend()">
                     Send HAH
                 </div>
@@ -131,6 +131,7 @@ export default {
                     loading.close()
                 })
                 .on('error', (error) => {
+                    console.log(error)
                     loading.close()
                     this.$notify.error({
                         title: 'Error',

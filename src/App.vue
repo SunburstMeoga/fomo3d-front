@@ -35,17 +35,52 @@ export default {
         });
         console.log('当前链id', chainId)
         this.$store.commit('getChainId', chainId)
-        if (chainId !== this.Config.chainId) {
-          Dialog.alert({
-            title: this.$t('dialog.checkNetwork'),
-            message: this.$t('dialog.checkMessage'),
-            confirmButtonText: this.$t('dialog.confirmButtonText'),
-          }).then(() => {
-            this.switchNetwork()
-          });
-        }
+        // if (chainId !== this.Config.chainId) {
+        //   Dialog.alert({
+        //     title: this.$t('dialog.checkNetwork'),
+        //     message: this.$t('dialog.checkMessage'),
+        //     confirmButtonText: this.$t('dialog.confirmButtonText'),
+        //   }).then(() => {
+        //     this.switchNetwork()
+        //   });
+        // }
+        this.switchNetwork()
       } catch (err) {
         console.error(err);
+      }
+    },
+    async switchNetwork() {
+      try {
+        await window.ethereum.request({
+          method: 'wallet_switchEthereumChain',
+          params: [{ chainId: this.Config.chainId }],
+        })
+      } catch (err) {
+        console.error(err)
+        if (err.code === 4902) {
+          try {
+            await ethereum.request({
+              method: 'wallet_addEthereumChain',
+              params: [
+                {
+                  chainId: this.Config.chainId,
+                  chainName: 'Hash Ahead Testnet',
+                  rpcUrls: ['https://rpc-testnet.hashahead.org'],
+                  iconUrls: ['https://testnet.hashahead.org/logo.png'],
+                  blockExplorerUrls: ['https://testnet.hashahead.org/'],
+                  nativeCurrency: {
+                    name: 'HAH',
+                    symbol: 'HAH',
+                    decimals: 18
+                  }
+                },
+              ],
+            });
+          } catch (addError) {
+            console.log(addError)
+          }
+
+        }
       }
     },
     async networkHasChanged() {
@@ -54,13 +89,15 @@ export default {
         this.$store.commit('getChainId', chainChanged)
 
         if (chainChanged !== this.Config.chainId) {
-          Dialog.alert({
-            title: this.$t('dialog.checkNetwork'),
-            message: this.$t('dialog.checkMessage'),
-            confirmButtonText: this.$t('dialog.confirmButtonText'),
-          }).then(() => {
-            this.switchNetwork()
-          });
+          // Dialog.alert({
+          //   title: this.$t('dialog.checkNetwork'),
+          //   message: this.$t('dialog.checkMessage'),
+          //   confirmButtonText: this.$t('dialog.confirmButtonText'),
+          // }).then(() => {
+          //   this.switchNetwork()
+          // });
+          this.switchNetwork()
+
         }
       })
     },

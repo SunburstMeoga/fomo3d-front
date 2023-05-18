@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="py-3 sm:flex sm:justify-between">
-            <div class='w-11/12 ml-auto mr-auto text-primary sm:w-2/5'>
+            <div class='w-11/12 ml-auto mr-auto text-primary'>
                 <div class=''>
                     Round #{{ currentRound }}
                 </div>
@@ -22,9 +22,8 @@
                         </div>
                         <div class='flex flex-col items-end'>
                             <div class='text-sm flex justify-start items-center sm:text-lg'>
-
                                 <div>
-                                    {{ item.content || '0x6ee9d9915aedfc3699291ce3935e6806ee57843c' }}
+                                    {{ item.content }}
                                 </div>
                                 <div v-if="index === 0"
                                     class="border border-primary rounded-2xl px-2 text-sm text-primary ml-2"
@@ -32,9 +31,9 @@
                                     Copy
                                 </div>
                             </div>
-                            <div class='text-xs sm:text-sm'>
+                            <!-- <div class='text-xs sm:text-sm'>
                                 {{ item.amount }}
-                            </div>
+                            </div> -->
 
                         </div>
                     </div>

@@ -12,7 +12,7 @@
             IS IF YOU
             STOP PLAYING
         </div>
-        <div v-if="$store.state.walletInfo.address && $store.state.chainId === '0x539'">
+        <div v-if="$store.state.walletInfo.address && $store.state.chainId === '0x11623'">
             <module-title titleWord="Account Information"></module-title>
             <div class="bg-moduleBg bg-opacity-75 mt-2 mr-auto ml-auto mb-2 w-11/12 rounded sm:w-10/12">
                 <account />
