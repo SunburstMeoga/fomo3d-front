@@ -190,23 +190,23 @@ export default {
             web3Contract.methods.lastBuyTimestamp().call().then((result) => {
                 console.log('lastBuyTimestamp:', result)
                 this.timer = setInterval(() => {
-                    this.countDown(result * 1000)
+                    this.countDown(parseInt(result) * 1000)
                 }, 1000)
             })
             web3Contract.methods.pot().call().then((result) => {
                 console.log('pot:', result)
-                this.roundList[1].content = result + 'HAH'
+                this.roundList[1].content = result + ' HAH'
 
             })
             web3Contract.methods.totalKeysSold().call().then((result) => {
                 console.log('totalKeysSold:', result)
-                this.roundList[2].content = result + 'HAH'
+                this.roundList[2].content = result + ' HAH'
 
             })
             web3Contract.methods.roundCount().call().then((result) => {
                 console.log('roundCount:', result)
-                this.roundList[3].content = result + 'HAH'
-
+                this.roundList[3].content = result + ' HAH'
+                this.currentRound = parseInt(result) + 1
             })
         }
     }
