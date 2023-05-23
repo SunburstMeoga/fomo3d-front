@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-cover pb-4 bg-fixed bg-no-repeat min-h-screen bg-center home-main">
+    <div class="pb-4 bg-fixed bg-teamBg sm:bg-no-repeat min-h-screen bg-center home-main1">
         <menu-bar></menu-bar>
 
         <div
@@ -34,7 +34,10 @@
             <referrals></referrals>
         </div> -->
         <module-title titleWord="Round Information"></module-title>
-        <div class="bg-moduleBg bg-opacity-75 mt-2 mr-auto ml-auto mb-2 w-11/12 rounded sm:w-10/12">
+        <!-- <div class="bg-moduleBg bg-opacity-75 mt-2 mr-auto ml-auto mb-2 w-11/12 rounded sm:w-10/12">
+            <prize-pool></prize-pool>
+        </div> -->
+        <div class="card mt-2 mr-auto ml-auto mb-2 w-11/12  sm:w-10/12">
             <prize-pool></prize-pool>
         </div>
     </div>
@@ -67,6 +70,33 @@ export default {
 
 <style scoped>
 .home-main {
-    background-image: url('../assets/homeBackground.jpg');
+    background-image: url('../assets/dotted-map.png');
+    background-size: contain;
+    background-position: 50%;
+}
+
+.home-main1 {
+    background:
+        radial-gradient(rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, .15) 30%, rgba(255, 255, 255, .3) 32%, rgba(255, 255, 255, 0) 33%) 0 0,
+        radial-gradient(rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, .1) 11%, rgba(255, 255, 255, .3) 13%, rgba(255, 255, 255, 0) 14%) 0 0,
+        radial-gradient(rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, .2) 17%, rgba(255, 255, 255, .43) 19%, rgba(255, 255, 255, 0) 20%) 0 110px,
+        radial-gradient(rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, .2) 11%, rgba(255, 255, 255, .4) 13%, rgba(255, 255, 255, 0) 14%) -130px -170px,
+        radial-gradient(rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, .2) 11%, rgba(255, 255, 255, .4) 13%, rgba(255, 255, 255, 0) 14%) 130px 370px,
+        radial-gradient(rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, .1) 11%, rgba(255, 255, 255, .2) 13%, rgba(255, 255, 255, 0) 14%) 0 0,
+        linear-gradient(45deg, #343702 0%, #184500 20%, #187546 30%, #006782 40%, #0b1284 50%, #760ea1 60%, #83096e 70%, #840b2a 80%, #b13e12 90%, #e27412 100%);
+    background-size: 470px 470px, 970px 970px, 410px 410px, 610px 610px, 530px 530px, 730px 730px, 100% 100%;
+    background-color: #840b2a;
+}
+
+.card {
+
+    gap: 20px;
+    border-radius: 10px;
+    backdrop-filter: blur(6px);
+    background-color: rgba(218, 37, 29, 0.165);
+    box-shadow: rgba(0, 0, 0, 0.3) 2px 8px 8px;
+    border: 1px rgba(255, 255, 255, 0.4) solid;
+    border-bottom: 1px rgba(40, 40, 40, 0.35) solid;
+    border-right: 1px rgba(40, 40, 40, 0.35) solid;
 }
 </style>

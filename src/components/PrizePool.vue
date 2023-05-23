@@ -208,6 +208,9 @@ export default {
                 this.roundList[3].content = result + ' HAH'
                 this.currentRound = parseInt(result) + 1
             })
+            web3Contract.methods.keyHolders(window.ethereum.selectedAddress).call().then((result) => {
+                console.log('keyHolders:', result)
+            })
         }
     }
 }

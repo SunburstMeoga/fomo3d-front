@@ -17,7 +17,7 @@ module.exports = {
       'text': '#D1D5DB',
       'moduleBg': '#191c22',
       'barWhite': '#D1D5DB',
-      'teamBg': '#000'
+      'teamBg': '#16181d'
     },
     extend: {
       backgroundImage: {
