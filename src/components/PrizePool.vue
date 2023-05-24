@@ -22,8 +22,12 @@
                         </div>
                         <div class='flex flex-col items-end'>
                             <div class='text-sm flex justify-start items-center sm:text-lg'>
-                                <div>
+                                <div v-if="index !== 0">
                                     {{ item.content }}
+                                </div>
+                                <div v-else>
+                                    <span class="sm:hidden">{{ item.mobileAddress }}</span>
+                                    <span class="hidden sm:block">{{ item.pcAddress }}</span>
                                 </div>
                                 <div v-if="index === 0"
                                     class="border border-primary rounded rounded-2xl px-2 text-sm text-primary ml-2"
@@ -67,7 +71,8 @@ export default {
             roundList: [
                 {
                     title: 'Last Buyer:',
-                    content: '-',
+                    pcAddress: '-',
+                    mobileAddress: '-',
                     amount: '0 USD'
                 },
                 {
@@ -185,7 +190,9 @@ export default {
             let web3Contract = new this.Web3.eth.Contract(config.erc20_abi, config.con_addr)
             web3Contract.methods.lastBuyer().call().then((result) => {
                 console.log('lastBuyer:', result)
-                this.roundList[0].content = this.addressFilter(result)
+                this.roundList[0].mobileAddress = this.addressFilter(result)
+                this.roundList[0].pcAddress = result
+
             })
             web3Contract.methods.lastBuyTimestamp().call().then((result) => {
                 console.log('lastBuyTimestamp:', result)
