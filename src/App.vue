@@ -150,7 +150,7 @@ export default {
   border-radius: 50%;
   border: 2px solid #fff;
   box-shadow: inset 0 0 8px #fff;
-  animation: flutter 10s infinite;
+  animation: flutter 20s infinite;
   opacity: 0;
 }
 
@@ -179,7 +179,7 @@ export default {
   left: -10%;
   width: 50px;
   height: 50px;
-  animation-duration: 9s;
+  animation-duration: 50s;
   animation-delay: 0.1s;
 }
 
@@ -187,7 +187,7 @@ export default {
   left: 15%;
   width: 20px;
   height: 20px;
-  animation-duration: 6s;
+  animation-duration: 30s;
   animation-delay: 1.5s;
 
 }
@@ -196,17 +196,14 @@ export default {
   left: 20%;
   width: 60px;
   height: 60px;
-  animation-duration: 10s;
-
-
-
+  animation-duration: 20s;
 }
 
 .bubble:nth-child(4) {
   left: 30%;
   width: 30px;
   height: 30px;
-  animation-duration: 5.5s;
+  animation-duration: 40s;
   animation-delay: 1.5s;
 
 }
@@ -215,14 +212,14 @@ export default {
   left: 40%;
   width: 50px;
   height: 50px;
-  animation-duration: 12s;
+  animation-duration: 24s;
 }
 
 .bubble:nth-child(6) {
   left: 50%;
   width: 20px;
   height: 20px;
-  animation-duration: 6s;
+  animation-duration: 30s;
   animation-delay: 1s;
 
 }
@@ -231,7 +228,7 @@ export default {
   left: 60%;
   width: 40px;
   height: 40px;
-  animation-duration: 8s;
+  animation-duration: 30s;
   animation-delay: 1s;
 
 }
@@ -248,7 +245,7 @@ export default {
   left: 80%;
   width: 55px;
   height: 55px;
-  animation-duration: 9s;
+  animation-duration: 50s;
   animation-delay: 0.5s;
 
 }
@@ -257,14 +254,14 @@ export default {
   left: 100%;
   width: 40px;
   height: 40px;
-  animation-duration: 12s;
+  animation-duration: 24s;
 }
 
 .bubble:nth-child(11) {
   left: 100%;
   width: 30px;
   height: 30px;
-  animation-duration: 12s;
+  animation-duration: 24s;
 
 }
 
