@@ -1,6 +1,6 @@
 <template>
     <div class="py-3">
-        <div class="w-11/12 mr-auto ml-auto sm:flex sm:bg-primary sm:rounded-full sm:h-12 sm:justify-between sm:px-10">
+        <div class="w-11/12 mr-auto ml-auto sm:flex sm:flex-col sm:w-full sm:rounded-full sm:justify-between sm:px-10">
             <div class="flex justify-between items-center text-primary">
                 <div>Address:</div>
                 <div class="flex justify-start items-center">
@@ -28,6 +28,10 @@
                 <div>Earnings:</div>
                 <div>{{ earnings }} </div>
             </div>
+            <div class="flex justify-between items-center text-primary">
+                <div>Spend:</div>
+                <div>{{ earnings }} HAH</div>
+            </div>
         </div>
 
     </div>
@@ -40,8 +44,9 @@ import { config } from '../const/config'
 export default {
     data() {
         return {
-            keys: 0,
-            earnings: 0
+            keys: '',
+            earnings: '',
+            spend: ''
         }
     },
     mounted() {
@@ -64,6 +69,12 @@ export default {
                 })
 
             })
+            web3Contract.methods.accumulatedNewPlayerSpend(window.ethereum.selectedAddress).call().then((res) => {
+                console.log('accumulatedNewPlayerSpend:', res)
+                this.spend = res
+            })
+
+
 
         },
         copyContent(content) {

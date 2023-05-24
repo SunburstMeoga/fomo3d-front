@@ -2,6 +2,24 @@
     {
         "inputs": [
             {
+                "internalType": "uint256",
+                "name": "numKeys",
+                "type": "uint256"
+            },
+            {
+                "internalType": "address payable",
+                "name": "inviter",
+                "type": "address"
+            }
+        ],
+        "name": "buyKeys",
+        "outputs": [],
+        "stateMutability": "payable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
                 "internalType": "address payable",
                 "name": "_platformAddress",
                 "type": "address"
@@ -82,45 +100,6 @@
     },
     {
         "inputs": [],
-        "name": "BASE_KEY_PRICE",
-        "outputs": [
-            {
-                "internalType": "uint256",
-                "name": "",
-                "type": "uint256"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "inputs": [],
-        "name": "MAX_KEYS_PER_PURCHASE",
-        "outputs": [
-            {
-                "internalType": "uint256",
-                "name": "",
-                "type": "uint256"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "inputs": [],
-        "name": "TIMER_INCREMENT",
-        "outputs": [
-            {
-                "internalType": "uint256",
-                "name": "",
-                "type": "uint256"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "inputs": [],
         "name": "accumulatedHolderPrizeShare",
         "outputs": [
             {
@@ -171,6 +150,25 @@
         "type": "function"
     },
     {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "name": "accumulatedNewPlayerSpend",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
         "inputs": [],
         "name": "accumulatedPlatformShare",
         "outputs": [
@@ -184,21 +182,16 @@
         "type": "function"
     },
     {
-        "inputs": [
+        "inputs": [],
+        "name": "BASE_KEY_PRICE",
+        "outputs": [
             {
                 "internalType": "uint256",
-                "name": "numKeys",
+                "name": "",
                 "type": "uint256"
-            },
-            {
-                "internalType": "address payable",
-                "name": "inviter",
-                "type": "address"
             }
         ],
-        "name": "buyKeys",
-        "outputs": [],
-        "stateMutability": "payable",
+        "stateMutability": "view",
         "type": "function"
     },
     {
@@ -260,12 +253,12 @@
     },
     {
         "inputs": [],
-        "name": "lastBuyTimestamp",
+        "name": "lastBuyer",
         "outputs": [
             {
-                "internalType": "uint256",
+                "internalType": "address payable",
                 "name": "",
-                "type": "uint256"
+                "type": "address"
             }
         ],
         "stateMutability": "view",
@@ -273,12 +266,12 @@
     },
     {
         "inputs": [],
-        "name": "lastBuyer",
+        "name": "lastBuyTimestamp",
         "outputs": [
             {
-                "internalType": "address payable",
+                "internalType": "uint256",
                 "name": "",
-                "type": "address"
+                "type": "uint256"
             }
         ],
         "stateMutability": "view",
@@ -324,6 +317,19 @@
     },
     {
         "inputs": [],
+        "name": "MAX_KEYS_PER_PURCHASE",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
         "name": "paused",
         "outputs": [
             {
@@ -364,6 +370,19 @@
     {
         "inputs": [],
         "name": "roundCount",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "TIMER_INCREMENT",
         "outputs": [
             {
                 "internalType": "uint256",

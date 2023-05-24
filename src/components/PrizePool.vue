@@ -11,11 +11,11 @@
                 <div class='mb-1 sm:text-xl'>
                     {{ countTime }}
                 </div>
-                <div class='w-full h-0.5 bg-barWhite mb-1'>
+                <div class='w-full h-0.5 bg-barWhite mb-2'>
                     <div class='bg-primary py-px' :style="{ width: barWidth }"></div>
                 </div>
                 <div class="sm:mt-10">
-                    <div class='flex justify-between text-primary mb-1 sm:mb-2' v-for='(item, index) in roundList'
+                    <div class='flex justify-between text-primary mb-2 sm:mb-2' v-for='(item, index) in roundList'
                         :key='index'>
                         <div class='text-sm sm:text-lg'>
                             {{ item.title }}
