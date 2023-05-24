@@ -265,5 +265,76 @@ export default {
 
 }
 
-body {}
-</style>
+.bubble:nth-child(12) {
+  left: 100%;
+  width: 30px;
+  height: 30px;
+  animation-duration: 24s;
+
+}
+
+.bubble:nth-child(13) {
+  left: 100%;
+  width: 30px;
+  height: 30px;
+  animation-duration: 24s;
+
+}
+
+.bubble:nth-child(14) {
+  left: 100%;
+  width: 30px;
+  height: 30px;
+  animation-duration: 24s;
+
+}
+
+.bubble:nth-child(15) {
+  left: 100%;
+  width: 30px;
+  height: 30px;
+  animation-duration: 24s;
+
+}
+
+.bubble:nth-child(16) {
+  left: 100%;
+  width: 30px;
+  height: 30px;
+  animation-duration: 24s;
+
+}
+
+.bubble:nth-child(17) {
+  left: 100%;
+  width: 30px;
+  height: 30px;
+  animation-duration: 24s;
+
+}
+
+.bubble:nth-child(18) {
+  left: 100%;
+  width: 30px;
+  height: 30px;
+  animation-duration: 24s;
+
+}
+
+.bubble:nth-child(19) {
+  left: 100%;
+  width: 30px;
+  height: 30px;
+  animation-duration: 24s;
+
+}
+
+.bubble:nth-child(20) {
+  left: 100%;
+  width: 30px;
+  height: 30px;
+  animation-duration: 24s;
+
+}
+
+body {}</style>
