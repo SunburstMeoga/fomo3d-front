@@ -1,5 +1,5 @@
 <template>
-    <div class="w-full h-14 bg-current bg-opacity-50 flex justify-center items-center bg-teamBg sm:h-20">
+    <div class="w-full h-14 bg-current py-1 bg-opacity-50 flex justify-center items-center bg-teamBg sm:h-20">
         <div class="flex justify-between items-center w-11/12">
             <div class="text-4xl text-primary font-bold">
                 Fomo3D

@@ -15,7 +15,7 @@ module.exports = {
       'primary': '#DA251D',
       'secondary': '#F87171',
       'text': '#D1D5DB',
-      'moduleBg': '#191c22',
+      'moduleBg': '#131519',
       'barWhite': '#D1D5DB',
       'teamBg': '#16181d'
     },

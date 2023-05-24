@@ -26,7 +26,7 @@
                                     {{ item.content }}
                                 </div>
                                 <div v-if="index === 0"
-                                    class="border border-primary rounded-2xl px-2 text-sm text-primary ml-2"
+                                    class="border border-primary rounded rounded-2xl px-2 text-sm text-primary ml-2"
                                     @click="copyContent(item.content)">
                                     Copy
                                 </div>
@@ -208,9 +208,7 @@ export default {
                 this.roundList[3].content = result + ' HAH'
                 this.currentRound = parseInt(result) + 1
             })
-            web3Contract.methods.keyHolders(window.ethereum.selectedAddress).call().then((result) => {
-                console.log('keyHolders:', result)
-            })
+
         }
     }
 }
