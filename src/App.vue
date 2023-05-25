@@ -137,12 +137,7 @@ export default {
   width: 100%;
   height: 100%;
   z-index: -10;
-  background: #000000;
-  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to bottom, #434343, #000000);
-  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to bottom, #434343, #000000);
-  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #1C1C1C;
 }
 
 .bubble {
@@ -337,4 +332,5 @@ export default {
 
 }
 
-body {}</style>
+body {}
+</style>

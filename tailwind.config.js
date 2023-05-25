@@ -14,10 +14,12 @@ module.exports = {
     colors: {
       'primary': '#DA251D',
       'secondary': '#F87171',
-      'text': '#D1D5DB',
+      'text': '#fff',
       'moduleBg': '#131519',
       'barWhite': '#D1D5DB',
-      'teamBg': '#16181d'
+      'teamBg': '#16181d',
+      'pageBg': '#1C1C1C',
+      'cardBg': '#262626'
     },
     extend: {
       backgroundImage: {

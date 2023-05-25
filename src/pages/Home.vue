@@ -1,7 +1,7 @@
 <template>
     <div class="pb-4 bg-fixed sm:bg-no-repeat min-h-screen bg-center opacity-5">
         <menu-bar></menu-bar>
-        <div class="card mt-2 mr-auto ml-auto mb-2 w-11/12 sm:w-10/12 p-2 text-center">
+        <div class="bg-primary text-text rounded-lg mt-2 mr-auto ml-auto mb-2 w-11/12 sm:w-10/12 p-2 text-center">
             THE
             ONLY WAY YOU
             LOSE
@@ -68,14 +68,10 @@ export default {
 
 <style scoped>
 .card {
-    color: white;
     gap: 20px;
     border-radius: 11px;
     backdrop-filter: blur(3px);
-    background-color: rgba(67, 67, 67, 0.287);
+    background-color: #262626;
     box-shadow: rgba(0, 0, 0, 0.3) 2px 8px 8px;
-    border: 1px rgba(255, 255, 255, 0.4) solid;
-    border-bottom: 1px rgba(40, 40, 40, 0.35) solid;
-    border-right: 1px rgba(40, 40, 40, 0.35) solid;
 }
 </style>

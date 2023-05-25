@@ -1,7 +1,7 @@
 <template>
     <div class="py-3">
         <div class="w-11/12 mr-auto ml-auto sm:flex sm:flex-col sm:w-full sm:rounded-full sm:justify-between sm:px-10">
-            <div class="flex justify-between items-center text-primary">
+            <div class="flex justify-between items-center text-text">
                 <div>Address:</div>
                 <div class="flex justify-start items-center">
                     <div class="sm:hidden">
@@ -10,25 +10,25 @@
                     <div class="hidden sm:block">
                         {{ $store.state.walletInfo.address }}
                     </div>
-                    <div class="border border-primary rounded rounded-2xl px-2 text-sm text-primary ml-2"
+                    <div class="border border-text rounded rounded-2xl px-2 text-sm text-text ml-2"
                         @click="copyContent($store.state.walletInfo.address)">
                         Copy
                     </div>
                 </div>
             </div>
-            <div class="flex justify-between items-center text-primary">
+            <div class="flex justify-between items-center text-text">
                 <div>Balance:</div>
                 <div>{{ $store.state.walletInfo.balance }} HAH</div>
             </div>
-            <div class="flex justify-between items-center text-primary">
+            <div class="flex justify-between items-center text-text">
                 <div>Total Keys:</div>
                 <div>{{ keys }} </div>
             </div>
-            <div class="flex justify-between items-center text-primary">
+            <div class="flex justify-between items-center text-text">
                 <div>Earnings:</div>
                 <div>{{ earnings }} </div>
             </div>
-            <div class="flex justify-between items-center text-primary">
+            <div class="flex justify-between items-center text-text">
                 <div>Spend:</div>
                 <div>{{ earnings }} HAH</div>
             </div>
@@ -79,6 +79,7 @@ export default {
         },
         copyContent(content) {
             if (!content) return
+            console.log(content)
             navigator.clipboard.writeText(content).then(() => {
                 this.$notify({
                     title: 'Success',

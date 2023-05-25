@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="py-3 sm:flex sm:justify-between">
-            <div class='w-11/12 ml-auto mr-auto text-primary'>
+            <div class='w-11/12 ml-auto mr-auto text-text'>
                 <div class=''>
                     Round #{{ currentRound }}
                 </div>
@@ -12,10 +12,10 @@
                     {{ countTime }}
                 </div>
                 <div class='w-full h-0.5 bg-barWhite mb-2'>
-                    <div class='bg-primary py-px' :style="{ width: barWidth }"></div>
+                    <div class='bg-text py-px' :style="{ width: barWidth }"></div>
                 </div>
                 <div class="sm:mt-10">
-                    <div class='flex justify-between text-primary mb-2 sm:mb-2' v-for='(item, index) in roundList'
+                    <div class='flex justify-between text-text mb-2 sm:mb-2' v-for='(item, index) in roundList'
                         :key='index'>
                         <div class='text-sm sm:text-lg'>
                             {{ item.title }}
@@ -30,7 +30,7 @@
                                     <span class="hidden sm:block">{{ item.pcAddress }}</span>
                                 </div>
                                 <div v-if="index === 0"
-                                    class="border border-primary rounded rounded-2xl px-2 text-sm text-primary ml-2"
+                                    class="border border-text rounded rounded-2xl px-2 text-sm text-text ml-2"
                                     @click="copyContent(item.content)">
                                     Copy
                                 </div>
@@ -44,7 +44,7 @@
                 </div>
             </div>
             <!-- <div class='flex flex-wrap justify-between items-center w-11/12 mr-auto ml-auto sm:w-2/5 sm:justify-around'>
-                <div class='w-9/20 rounded text-primary flex flex-col items-center justify-center mb-2 bg-teamBg bg-opacity-75 sm:w-2/5'
+                <div class='w-9/20 rounded text-text flex flex-col items-center justify-center mb-2 bg-teamBg bg-opacity-75 sm:w-2/5'
                     v-for='(item, index) in purchaseList' :key='index'>
                     <div class='text-lg'>
                         {{ item.title }}

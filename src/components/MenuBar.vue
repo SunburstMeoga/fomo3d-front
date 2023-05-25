@@ -9,7 +9,7 @@
                     {{ item.title }}
                 </div>
             </div> -->
-            <div class="px-2 py-1 text-primary rounded-sm border-primary border" @click="handleConnect()">
+            <div class="px-2 py-1 text-text rounded-sm bg-primary border-primary border" @click="handleConnect()">
                 <!-- {{ $store.state.walletInfo.address }}
                 {{ $store.state.chainId }} -->
                 {{ $store.state.walletInfo.address && $store.state.chainId === '0x11623' ? 'Disconnect' : 'Connect' }}

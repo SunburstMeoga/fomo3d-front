@@ -11,13 +11,14 @@
                 </div>
             </div>
         </div> -->
-        <div class="w-11/12 mr-auto ml-auto sm:flex sm:bg-primary sm:rounded-full sm:h-12 sm:justify-between sm:px-10">
-            <div class="flex justify-between items-center text-primary sm:text-text sm:w-2/4 sm:justify-start">
+        <div class="w-11/12 mr-auto ml-auto sm:flex sm:bg-text sm:rounded-full sm:h-12 sm:justify-between sm:px-10">
+            <div class="flex justify-between items-center text-text sm:text-text sm:w-2/4 sm:justify-start">
                 <div class="text-lg sm:mr-6">
                     Key
                 </div>
                 <div class="w-2/4 h-8 sm:mr-6">
-                    <input type="number" class="rounded-full border-none text-center h-full w-full sm:text-primary"
+                    <input type="number"
+                        class="rounded-full border border-primary bg-cardBg text-center h-full w-full sm:text-text"
                         v-model="keyNumber" @change="keysChange($event)">
                 </div>
                 <div class="text-lg">
@@ -25,12 +26,12 @@
                 </div>
             </div>
             <div class="flex justify-between items-center py-4">
-                <div class="border-primary w-full text-lg border rounded-full text-center py-1 text-primary sm:border-text sm:text-text sm:px-20"
+                <div class="w-full text-lg border border-primary rounded-full text-center py-1 text-text sm:border-text sm:text-text sm:px-20"
                     @click="toSend()">
                     Send HAH
                 </div>
                 <!-- <div
-                    class="border-primary text-lg border rounded-full px-6 py-1 text-primary sm:border-text sm:text-text sm:ml-6">
+                    class="border-text text-lg border rounded-full px-6 py-1 text-text sm:border-text sm:text-text sm:ml-6">
                     Use Valut
                 </div> -->
             </div>
@@ -144,12 +145,12 @@ export default {
 </script>
 
 <style scoped>
-.item-title-clicked {
+/*.item-title-clicked {
     color: #EF4444;
     font-weight: 800;
 }
 
 .item-clicked {
     background: #EF4444;
-}
+}*/
 </style>

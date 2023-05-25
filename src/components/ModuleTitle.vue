@@ -1,5 +1,5 @@
 <template>
-    <div class="text-primary w-11/12 mr-auto ml-auto sm:flex sm:items-baseline sm:w-10/12">
+    <div class="text-text w-11/12 mr-auto ml-auto sm:flex sm:items-baseline sm:w-10/12">
         <div class="text-2xl font-bold sm:text-3xl">
             {{ titleWord }}
         </div>
