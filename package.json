@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@metamask/detect-provider": "^2.0.0",
+    "bubbly-bg": "^1.0.0",
     "element-ui": "^2.15.13",
     "tailwindcss": "1.4.6",
     "vue": "^2.5.2",

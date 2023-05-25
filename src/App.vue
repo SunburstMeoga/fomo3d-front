@@ -1,14 +1,9 @@
 <template>
   <div id="app">
     <router-view />
-    <div class="kuang">
-      <div class="bubble" v-for="(item, index) in 20" :key="index" />
-    </div>
   </div>
 </template>
-
 <script>
-
 export default {
   name: 'App',
   created() {
@@ -20,6 +15,7 @@ export default {
     }
   },
   methods: {
+
     async initWallet() {
       try {
         const accounts = await window.ethereum.request({
