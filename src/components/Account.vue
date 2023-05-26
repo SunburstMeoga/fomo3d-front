@@ -10,7 +10,7 @@
                     <div class="hidden sm:block">
                         {{ $store.state.walletInfo.address }}
                     </div>
-                    <div class="border border-text rounded rounded-2xl px-2 text-sm text-text ml-2"
+                    <div class="border cursor-pointer border-text rounded rounded-2xl px-2 text-sm text-text ml-2"
                         @click="copyContent($store.state.walletInfo.address)">
                         Copy
                     </div>

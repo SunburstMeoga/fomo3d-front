@@ -30,7 +30,7 @@
                                     <span class="hidden sm:block">{{ item.pcAddress }}</span>
                                 </div>
                                 <div v-if="index === 0"
-                                    class="border border-text rounded rounded-2xl px-2 text-sm text-text ml-2"
+                                    class="border cursor-pointer border-text rounded rounded-2xl px-2 text-sm text-text ml-2"
                                     @click="copyContent(item.content)">
                                     Copy
                                 </div>

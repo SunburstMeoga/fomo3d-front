@@ -11,7 +11,7 @@
                 </div>
             </div>
         </div> -->
-        <div class="w-11/12 mr-auto ml-auto sm:flex sm:bg-text sm:rounded-full sm:h-12 sm:justify-between sm:px-10">
+        <div class="w-11/12 mr-auto ml-auto sm:flex  sm:rounded-full sm:h-12 sm:justify-between sm:px-10">
             <div class="flex justify-between items-center text-text sm:text-text sm:w-2/4 sm:justify-start">
                 <div class="text-lg sm:mr-6">
                     Key
@@ -26,7 +26,7 @@
                 </div>
             </div>
             <div class="flex justify-between items-center py-4">
-                <div class="w-full text-lg border border-primary rounded-full text-center py-1 text-text sm:border-text sm:text-text sm:px-20"
+                <div class="w-full cursor-pointer text-lg border border-primary rounded-full text-center py-1 text-text sm:border-text sm:text-text sm:px-20"
                     @click="toSend()">
                     Send HAH
                 </div>

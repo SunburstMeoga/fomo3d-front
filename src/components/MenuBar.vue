@@ -4,25 +4,36 @@
             <div class="text-4xl text-primary font-bold">
                 Fomo3D
             </div>
-            <!-- <div class="operating">
-                <div class="operating-item" v-for="(item, index) in operatingList" :key="index">
-                    {{ item.title }}
+
+            <div class="flex justify-end items-center text-text">
+                <div class="rounded-sm bg-primary border-primary border px-2 py-1">
+                    <div class="icon iconfont icon-guizeguanli" @click="showRule" />
                 </div>
-            </div> -->
-            <div class="px-2 py-1 text-text rounded-sm bg-primary border-primary border" @click="handleConnect()">
-                <!-- {{ $store.state.walletInfo.address }}
-                {{ $store.state.chainId }} -->
-                {{ $store.state.walletInfo.address && $store.state.chainId === '0x11623' ? 'Disconnect' : 'Connect' }}
+                <div class="rounded-sm bg-primary border-primary border px-2 py-1 ml-2">
+                    <div class="icon iconfont icon-message-language" />
+                </div>
+                <div class="px-2 py-1 rounded-sm bg-primary border-primary border ml-2" @click="handleConnect()">
+                    {{ $store.state.walletInfo.address && $store.state.chainId === '0x11623' ? 'Disconnect' : 'Connect' }}
+                </div>
             </div>
+        </div>
+        <div>
+            <van-popup v-model="show" class="w-9/12 rounded-t-lg">
+                <rule />
+            </van-popup>
         </div>
     </div>
 </template>
 
 <script>
+import { Popup } from 'vant'
+import Rule from '../components/Rule'
 export default {
+    components: { [Popup.name]: Popup, Rule },
     data() {
         return {
             // web3: new this.Web3(window.ethereum),
+            show: false,
             operatingList: [
                 {
                     title: 'Language'
@@ -44,6 +55,10 @@ export default {
         // this.init()
     },
     methods: {
+        showRule() {
+            this.show = true
+            console.log(this.show)
+        },
         async switchNetwork() {
             try {
                 await window.ethereum.request({
