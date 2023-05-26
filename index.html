@@ -15,7 +15,9 @@
 
 <body>
   <div class="bg-content">
-    <canvas id="bg" class="bg w-full h-full"></canvas>
+    <canvas id="bg" class="bg sm:hidden"></canvas>
+    <canvas id="bgpc" class="bgpc hidden sm:block"></canvas>
+
   </div>
   <noscript>
     <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled.
@@ -25,6 +27,14 @@
   <script>
     bubbly({
       canvas: document.getElementById("bg"),
+      colorStart: "#111",
+      colorStop: "#422",
+      blur: 1,
+      compose: "source-over",
+      fillFunc: () => `hsla(0, 100%, 100%, ${Math.random() * 0.25})`
+    });
+    bubbly({
+      canvas: document.getElementById("bgpc"),
       colorStart: "#111",
       colorStop: "#422",
       blur: 1,
@@ -42,7 +52,17 @@
     position: fixed;
     top: 0;
     left: 0;
+    height: 100vh;
+    width: 200vh;
+    z-index: -10;
+  }
 
+  .bgpc {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
     z-index: -10;
   }
 </style>
