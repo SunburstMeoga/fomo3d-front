@@ -18,8 +18,10 @@
             </div>
         </div>
         <div>
-            <van-popup v-model="show" class="w-9/12 rounded-t-lg">
-                <rule />
+            <van-popup v-model="show" class="w-9/12 rounded-lg" :close-on-click-overlay="false">
+                <div>
+                    <rule @closeRule="show = false" />
+                </div>
             </van-popup>
         </div>
     </div>
