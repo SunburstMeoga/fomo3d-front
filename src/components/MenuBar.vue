@@ -35,7 +35,7 @@ export default {
     data() {
         return {
             // web3: new this.Web3(window.ethereum),
-            show: true,
+            show: false,
             operatingList: [
                 {
                     title: 'Language'
@@ -57,6 +57,8 @@ export default {
         // this.init()
         if (localStorage.getItem('noPrompts') && localStorage.getItem('noPrompts') === '1') {
             this.show = false
+        } else {
+            this.show = true
         }
     },
     methods: {

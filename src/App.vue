@@ -124,6 +124,7 @@ export default {
 * {
   padding: 0;
   margin: 0;
+  font-family: "Comfortaa", Arial, "Helvetica Neue", Helvetica, serif, sans-serif;
 }
 
 .kuang {
