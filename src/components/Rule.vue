@@ -56,23 +56,47 @@
                 </table>
 
             </div>
-            <div class="flex justify-center items-center">
+            <div class="text-primary mr-auto ml-auto flex justify-center items-center py-2">
+                <div>
+                    <van-checkbox v-model="noPrompts" class="text-sm text-primary" icon-size="18px" checked-color="#DA251D"
+                        @change="clickTips" />
+                </div>
+                <div class="text-sm pl-2">不再提示</div>
+            </div>
+            <!-- <div class="flex justify-center items-center">
                 <div class="border border-primary text-sm text-primary rounded-full px-3 py-1" @click="closeRule">
                     知道了
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 </template>
 
 <script>
+import { Checkbox } from 'vant'
 export default {
+    components: { [Checkbox.name]: Checkbox },
     data() {
         return {
-            show: true
+            show: true,
+            noPrompts: false
+        }
+    },
+    mounted() {
+        // this.init()
+        if (localStorage.getItem('noPrompts') && localStorage.getItem('noPrompts') === '1') {
+            this.noPrompts = true
         }
     },
     methods: {
+        clickTips(noPrompts) {
+            console.log(noPrompts)
+            if (noPrompts) {
+                localStorage.setItem('noPrompts', '1')
+            } else {
+                localStorage.removeItem('noPrompts')
+            }
+        },
         closeRule() {
             this.$emit('closeRule')
         }

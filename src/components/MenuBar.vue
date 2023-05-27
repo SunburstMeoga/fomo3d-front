@@ -18,9 +18,9 @@
             </div>
         </div>
         <div>
-            <van-popup v-model="show" class="w-9/12 rounded-lg" :close-on-click-overlay="false">
+            <van-popup v-model="show" class="w-9/12 rounded-lg">
                 <div>
-                    <rule @closeRule="show = false" />
+                    <rule />
                 </div>
             </van-popup>
         </div>
@@ -35,7 +35,7 @@ export default {
     data() {
         return {
             // web3: new this.Web3(window.ethereum),
-            show: false,
+            show: true,
             operatingList: [
                 {
                     title: 'Language'
@@ -55,6 +55,9 @@ export default {
     },
     mounted() {
         // this.init()
+        if (localStorage.getItem('noPrompts') && localStorage.getItem('noPrompts') === '1') {
+            this.show = false
+        }
     },
     methods: {
         showRule() {
