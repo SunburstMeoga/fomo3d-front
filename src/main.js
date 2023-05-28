@@ -10,6 +10,7 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import '@/assets/css/tailwind.css'
 import '@/assets/css/iconfont.css'
+import i18n from './local'
 
 
 Vue.use(ElementUI)
@@ -25,6 +26,7 @@ new Vue({
   el: '#app',
   store,
   router,
+  i18n,
   components: { App },
   template: '<App/>'
 })

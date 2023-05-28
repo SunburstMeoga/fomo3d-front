@@ -11,7 +11,7 @@
             STOP PLAYING
         </div>
         <div v-if="$store.state.walletInfo.address && $store.state.chainId === '0x11623'">
-            <module-title titleWord="Account Information"></module-title>
+            <module-title :titleWord="$t('account.infor')"></module-title>
             <div class="card mt-2 mr-auto ml-auto mb-2 w-11/12 sm:w-10/12">
                 <account />
             </div>

@@ -10,10 +10,11 @@
                     <div class="icon iconfont icon-guizeguanli" @click="showRule" />
                 </div>
                 <div class="rounded-sm bg-primary border-primary border px-2 py-1 ml-2">
-                    <div class="icon iconfont icon-message-language" />
+                    <div class="icon iconfont icon-message-language" @click="showPicker = true" />
                 </div>
                 <div class="px-2 py-1 rounded-sm bg-primary border-primary border ml-2" @click="handleConnect()">
-                    {{ $store.state.walletInfo.address && $store.state.chainId === '0x11623' ? 'Disconnect' : 'Connect' }}
+                    {{ $store.state.walletInfo.address && $store.state.chainId === '0x11623' ? $t('menubar.disconnect') :
+                        $t('menubar.connect') }}
                 </div>
             </div>
         </div>
@@ -24,18 +25,25 @@
                 </div>
             </van-popup>
         </div>
+        <div>
+            <van-popup v-model="showPicker" round position="bottom">
+                <van-picker show-toolbar :columns="columns" @cancel="showPicker = false" @confirm="onConfirm" />
+            </van-popup>
+        </div>
     </div>
 </template>
 
 <script>
-import { Popup } from 'vant'
+import { Popup, Picker } from 'vant'
 import Rule from '../components/Rule'
 export default {
-    components: { [Popup.name]: Popup, Rule },
+    components: { [Popup.name]: Popup, Rule, [Picker.name]: Picker },
     data() {
         return {
             // web3: new this.Web3(window.ethereum),
+            columns: ['English', '简体中文', '繁體中文', '日本'],
             show: false,
+            showPicker: false,
             operatingList: [
                 {
                     title: 'Language'
@@ -62,6 +70,21 @@ export default {
         }
     },
     methods: {
+        onConfirm(value, index) {
+            console.log(`当前值：${value}, 当前索引：${index}`);
+            switch (index) {
+                case 0: this.$i18n.locale = 'en-us'
+                    break
+                case 1: this.$i18n.locale = 'zh-cn'
+                    break
+                case 2: this.$i18n.locale = 'zh-hk'
+                    break
+                case 3: this.$i18n.locale = 'ja-jp'
+            }
+            console.log(this.$i18n.locale)
+            this.showPicker = false
+        },
+
         showRule() {
             this.show = true
             console.log(this.show)
