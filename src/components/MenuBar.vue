@@ -27,7 +27,8 @@
         </div>
         <div>
             <van-popup v-model="showPicker" round position="bottom">
-                <van-picker show-toolbar :columns="columns" @cancel="showPicker = false" @confirm="onConfirm" />
+                <van-picker show-toolbar :confirm-button-text="$t('word.confirm')" :cancel-button-text="$t('word.cancel')"
+                    :columns="columns" @cancel="showPicker = false" @confirm="onConfirm" />
             </van-popup>
         </div>
     </div>
@@ -81,6 +82,7 @@ export default {
                     break
                 case 3: this.$i18n.locale = 'ja-jp'
             }
+            localStorage.setItem('locale', this.$i18n.locale)
             console.log(this.$i18n.locale)
             this.showPicker = false
         },

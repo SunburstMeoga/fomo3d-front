@@ -123,8 +123,8 @@ export default {
             if (!content) return
             navigator.clipboard.writeText(content).then(() => {
                 this.$notify({
-                    title: 'Success',
-                    message: 'Copy Succeeded',
+                    title: this.$t('word.success'),
+                    message: this.$t('word.copySuccess'),
                     type: 'success'
                 })
             }, () => {

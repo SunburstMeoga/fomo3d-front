@@ -8,6 +8,9 @@ export default {
   name: 'App',
   created() {
     this.getChainId()
+    if (localStorage.getItem('locale')) {
+      this.$i18n.locale = localStorage.getItem('locale')
+    }
   },
   mounted() {
     if (localStorage.getItem('connectStatus') && localStorage.getItem('connectStatus') === 'connect') {

@@ -6,6 +6,10 @@ export default {
     word: {
         illustrate: '你输掉这场比赛的唯一方法就是停止比赛',
         copy: '复制',
+        success: '成功',
+        copySuccess: '复制成功',
+        confirm: '确认',
+        cancel: '取消'
     },
     account: {
         infor: '账户信息',

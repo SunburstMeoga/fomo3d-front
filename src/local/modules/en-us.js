@@ -6,6 +6,10 @@ export default {
     word: {
         illustrate: 'THE ONLY WAY YOU LOSE IN THIS GAME IS IF YOU STOP PLAYING',
         copy: 'Copy',
+        success: 'Success',
+        copySuccess: 'Copy Success',
+        confirm: 'Confirm',
+        cancel: 'Cancel'
     },
     account: {
         infor: 'Account Information',

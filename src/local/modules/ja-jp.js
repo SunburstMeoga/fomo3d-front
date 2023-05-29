@@ -6,6 +6,10 @@ export default {
     word: {
         illustrate: '「このゲームで負ける唯一の方法は、プレイをやめることです」',
         copy: '複製',
+        success: '成功',
+        copySuccess: 'コピーに成功しました',
+        confirm: '確認',
+        cancel: 'キャンセル'
     },
     account: {
         infor: 'アカウント情報',
