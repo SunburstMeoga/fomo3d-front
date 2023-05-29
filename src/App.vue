@@ -1,11 +1,21 @@
 <template>
   <div id="app">
-    <router-view />
+    <div ref="vantaRef" style="width:100%;height:100vh;position:fixed;z-index: -1;"></div>
+    <div v-if="!showContent" class="my_title text-5xl sm:text-6xl">Welcome to the PGChain</div>
+    <router-view v-if="showContent" />
   </div>
 </template>
 <script>
+import * as THREE from 'three'
+import Globe from 'vanta/src/vanta.globe'
 export default {
   name: 'App',
+  data() {
+    return {
+      showContent: false,
+      timer: null
+    }
+  },
   created() {
     this.getChainId()
     if (localStorage.getItem('locale')) {
@@ -13,8 +23,27 @@ export default {
     }
   },
   mounted() {
+    this.vantaEffect = Globe({
+      el: this.$refs.vantaRef,
+      THREE: THREE,
+      color: '#DA251D',
+      backgroundColor: '#000000',
+      mouseControls: true,
+      touchControls: true,
+      scale: 1.00,
+      scaleMobile: 1.00,
+    })
+    this.timer = setTimeout(() => {
+      this.showContent = true
+    }, 2000)
     if (localStorage.getItem('connectStatus') && localStorage.getItem('connectStatus') === 'connect') {
       this.initWallet()
+    }
+  },
+  beforeDestroy() {
+    clearTimeout(this.timer)
+    if (this.vantaEffect) {
+      this.vantaEffect.destroy()
     }
   },
   methods: {
@@ -127,210 +156,17 @@ export default {
 * {
   padding: 0;
   margin: 0;
-  font-family: "Comfortaa", Arial, "Helvetica Neue", Helvetica, serif, sans-serif;
 }
 
-.kuang {
+.my_title {
+  z-index: 999;
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -10;
-  background: #1C1C1C;
+  top: 40%;
+  left: 10%;
+  color: #fff;
 }
 
-.bubble {
-  position: absolute;
-  border-radius: 50%;
-  border: 2px solid #fff;
-  box-shadow: inset 0 0 8px #fff;
-  animation: flutter 20s infinite;
-  opacity: 0;
+body {
+  font-family: '"Comfortaa", Arial, "Helvetica Neue", Helvetica, serif, sans-serif';
 }
-
-@keyframes flutter {
-  0% {
-    transform: translateX(0);
-    bottom: -100px;
-    opacity: 1;
-  }
-
-  50% {
-    transform: translateX(100px);
-    opacity: 0.5;
-  }
-
-
-  100% {
-    transform: translateX(0px);
-    bottom: 100%;
-    opacity: 0;
-
-  }
-}
-
-.bubble:nth-child(1) {
-  left: -10%;
-  width: 50px;
-  height: 50px;
-  animation-duration: 50s;
-  animation-delay: 0.1s;
-}
-
-.bubble:nth-child(2) {
-  left: 15%;
-  width: 20px;
-  height: 20px;
-  animation-duration: 30s;
-  animation-delay: 1.5s;
-
-}
-
-.bubble:nth-child(3) {
-  left: 20%;
-  width: 60px;
-  height: 60px;
-  animation-duration: 20s;
-}
-
-.bubble:nth-child(4) {
-  left: 30%;
-  width: 30px;
-  height: 30px;
-  animation-duration: 40s;
-  animation-delay: 1.5s;
-
-}
-
-.bubble:nth-child(5) {
-  left: 40%;
-  width: 50px;
-  height: 50px;
-  animation-duration: 24s;
-}
-
-.bubble:nth-child(6) {
-  left: 50%;
-  width: 20px;
-  height: 20px;
-  animation-duration: 30s;
-  animation-delay: 1s;
-
-}
-
-.bubble:nth-child(7) {
-  left: 60%;
-  width: 40px;
-  height: 40px;
-  animation-duration: 30s;
-  animation-delay: 1s;
-
-}
-
-.bubble:nth-child(8) {
-  left: 65%;
-  width: 60px;
-  height: 60px;
-  animation-duration: 15s;
-
-}
-
-.bubble:nth-child(9) {
-  left: 80%;
-  width: 55px;
-  height: 55px;
-  animation-duration: 50s;
-  animation-delay: 0.5s;
-
-}
-
-.bubble:nth-child(10) {
-  left: 100%;
-  width: 40px;
-  height: 40px;
-  animation-duration: 24s;
-}
-
-.bubble:nth-child(11) {
-  left: 100%;
-  width: 30px;
-  height: 30px;
-  animation-duration: 24s;
-
-}
-
-.bubble:nth-child(12) {
-  left: 100%;
-  width: 30px;
-  height: 30px;
-  animation-duration: 24s;
-
-}
-
-.bubble:nth-child(13) {
-  left: 100%;
-  width: 30px;
-  height: 30px;
-  animation-duration: 24s;
-
-}
-
-.bubble:nth-child(14) {
-  left: 100%;
-  width: 30px;
-  height: 30px;
-  animation-duration: 24s;
-
-}
-
-.bubble:nth-child(15) {
-  left: 100%;
-  width: 30px;
-  height: 30px;
-  animation-duration: 24s;
-
-}
-
-.bubble:nth-child(16) {
-  left: 100%;
-  width: 30px;
-  height: 30px;
-  animation-duration: 24s;
-
-}
-
-.bubble:nth-child(17) {
-  left: 100%;
-  width: 30px;
-  height: 30px;
-  animation-duration: 24s;
-
-}
-
-.bubble:nth-child(18) {
-  left: 100%;
-  width: 30px;
-  height: 30px;
-  animation-duration: 24s;
-
-}
-
-.bubble:nth-child(19) {
-  left: 100%;
-  width: 30px;
-  height: 30px;
-  animation-duration: 24s;
-
-}
-
-.bubble:nth-child(20) {
-  left: 100%;
-  width: 30px;
-  height: 30px;
-  animation-duration: 24s;
-
-}
-
-body {}
 </style>

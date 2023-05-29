@@ -1,18 +1,21 @@
 <template>
     <div class="w-full h-14 bg-current py-1 bg-opacity-50 flex justify-center items-center bg-teamBg sm:h-20">
         <div class="flex justify-between items-center w-11/12">
-            <div class="text-4xl text-primary font-bold">
+            <div class="text-4xl text-primary font-black">
                 Fomo3D
             </div>
 
             <div class="flex justify-end items-center text-text">
-                <div class="rounded-sm bg-primary border-primary border px-2 py-1">
+                <div
+                    class="rounded-sm bg-primary border-primary border px-2 py-1 hover:text-primary hover:border-primary hover:border hover:bg-moduleBg cursor-pointer">
                     <div class="icon iconfont icon-guizeguanli" @click="showRule" />
                 </div>
-                <div class="rounded-sm bg-primary border-primary border px-2 py-1 ml-2">
+                <div
+                    class="rounded-sm bg-primary border-primary border px-2 py-1 ml-2 sm:ml-6 hover:text-primary hover:border-primary hover:border hover:bg-moduleBg cursor-pointer">
                     <div class="icon iconfont icon-message-language" @click="showPicker = true" />
                 </div>
-                <div class="px-2 py-1 rounded-sm bg-primary border-primary border ml-2" @click="handleConnect()">
+                <div class="px-2 py-1 rounded-sm bg-primary border-primary border ml-2 sm:ml-6 hover:text-primary hover:border-primary hover:border hover:bg-moduleBg cursor-pointer"
+                    @click="handleConnect()">
                     {{ $store.state.walletInfo.address && $store.state.chainId === '0x11623' ? $t('menubar.disconnect') :
                         $t('menubar.connect') }}
                 </div>
@@ -45,17 +48,6 @@ export default {
             columns: ['English', '简体中文', '繁體中文', '日本'],
             show: false,
             showPicker: false,
-            operatingList: [
-                {
-                    title: 'Language'
-                },
-                {
-                    title: 'Community'
-                },
-                {
-                    title: 'Tutorial'
-                }
-            ],
 
             currentAddress: 'Connect',
             // web3: new this.Web3(window.ethereum)

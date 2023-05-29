@@ -1,5 +1,6 @@
 <template>
     <div class="pb-4 bg-fixed sm:bg-no-repeat min-h-screen bg-center opacity-5">
+        <div ref="vantaRef" style="width:100%;height:100vh;position:fixed;z-index: -1;"></div>
         <menu-bar></menu-bar>
         <div class="bg-primary text-text rounded-lg mt-2 mr-auto ml-auto mb-2 w-11/12 sm:w-10/12 p-2 text-center">
             {{ $t('word.illustrate') }}
@@ -37,6 +38,8 @@
 
 <script>
 
+import * as THREE from 'three'
+import Net from 'vanta/src/vanta.net'
 import MenuBar from '../components/MenuBar.vue'
 import ModuleTitle from '../components/ModuleTitle.vue'
 import Purchase from '../components/Purchase.vue'
@@ -56,7 +59,23 @@ export default {
         PrizePool,
         Account,
     },
-
+    mounted() {
+        this.vantaEffect = Net({
+            el: this.$refs.vantaRef,
+            THREE: THREE,
+            color: '#DA251D',
+            backgroundColor: '#000000',
+            mouseControls: true,
+            touchControls: true,
+            scale: 1.00,
+            scaleMobile: 1.00,
+        })
+    },
+    beforeDestroy() {
+        if (this.vantaEffect) {
+            this.vantaEffect.destroy()
+        }
+    },
 }
 </script>
 
