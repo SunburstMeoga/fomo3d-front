@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <div ref="vantaRef" style="width:100%;height:100vh;position:fixed;z-index: -1;"></div>
-    <div v-if="!showContent" class="my_title text-5xl sm:text-6xl">Welcome to the PGChain</div>
+    <div ref="vantaRef" v-if="!showContent" style="width:100%;height:100vh;position:fixed;z-index: -1;"></div>
+    <div v-if="!showContent" class="my_title font-bold text-5xl sm:text-6xl text-primary">Welcome to the PGChain</div>
     <router-view v-if="showContent" />
   </div>
 </template>
@@ -162,7 +162,7 @@ export default {
   z-index: 999;
   position: fixed;
   top: 40%;
-  left: 10%;
+  left: 8%;
   color: #fff;
 }
 
