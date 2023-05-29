@@ -14,7 +14,7 @@ export default {
     props: {
         titleWord: {
             type: String,
-            default: 'Purchase'
+            default: ''
         },
         secondTitle: {
             type: String,

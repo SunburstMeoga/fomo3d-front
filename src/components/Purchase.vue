@@ -28,7 +28,7 @@
             <div class="flex justify-between items-center py-4">
                 <div class="w-full cursor-pointer text-lg border border-primary rounded-full text-center py-1 text-text sm:border-text sm:text-text sm:px-20"
                     @click="toSend()">
-                    Send HAH
+                    {{ $t('purchase.send') }}
                 </div>
                 <!-- <div
                     class="border-text text-lg border rounded-full px-6 py-1 text-text sm:border-text sm:text-text sm:ml-6">

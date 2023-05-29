@@ -2,13 +2,7 @@
     <div class="pb-4 bg-fixed sm:bg-no-repeat min-h-screen bg-center opacity-5">
         <menu-bar></menu-bar>
         <div class="bg-primary text-text rounded-lg mt-2 mr-auto ml-auto mb-2 w-11/12 sm:w-10/12 p-2 text-center">
-            THE
-            ONLY WAY YOU
-            LOSE
-            IN
-            THIS GAME
-            IS IF YOU
-            STOP PLAYING
+            {{ $t('word.illustrate') }}
         </div>
         <div v-if="$store.state.walletInfo.address && $store.state.chainId === '0x11623'">
             <module-title :titleWord="$t('account.infor')"></module-title>
@@ -17,7 +11,7 @@
             </div>
         </div>
 
-        <module-title secondTitle="Buy a certain number of keys to increase the time of the countdown clock"></module-title>
+        <module-title :titleWord="$t('purchase.title')" :secondTitle="$t('purchase.tips')"></module-title>
         <div class="card mt-2 mr-auto ml-auto mb-2 w-11/12 sm:w-10/12">
             <purchase></purchase>
         </div>
@@ -31,7 +25,7 @@
         <div class="bg-moduleBg bg-opacity-75 mt-2 mr-auto ml-auto mb-2 w-11/12 rounded sm:w-10/12">
             <referrals></referrals>
         </div> -->
-        <module-title titleWord="Round Information"></module-title>
+        <module-title :titleWord="$t('round.title')"></module-title>
         <!-- <div class="bg-moduleBg bg-opacity-75 mt-2 mr-auto ml-auto mb-2 w-11/12 rounded sm:w-10/12">
             <prize-pool></prize-pool>
         </div> -->

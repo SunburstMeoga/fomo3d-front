@@ -3,10 +3,10 @@
         <div class="py-3 sm:flex sm:justify-between">
             <div class='w-11/12 ml-auto mr-auto text-text'>
                 <div class=''>
-                    Round #{{ currentRound }}
+                    {{ $t('round.roundNumber') }} #{{ currentRound }}
                 </div>
                 <div class='text-xl font-medium sm:font-bold sm:text-3xl'>
-                    Contract will drain in
+                    {{ $t('round.drain') }}
                 </div>
                 <div class='mb-1 sm:text-xl'>
                     {{ countTime }}
@@ -32,7 +32,7 @@
                                 <div v-if="index === 0"
                                     class="border cursor-pointer border-text rounded rounded-2xl px-2 text-sm text-text ml-2"
                                     @click="copyContent(item.content)">
-                                    Copy
+                                    {{ $t('word.copy') }}
                                 </div>
                             </div>
                             <!-- <div class='text-xs sm:text-sm'>
@@ -68,59 +68,40 @@ import { addressFilter } from '@/utils/format'
 export default {
     data() {
         return {
-            roundList: [
-                {
-                    title: 'Last Buyer:',
-                    pcAddress: '-',
-                    mobileAddress: '-',
-                    amount: '0 USD'
-                },
-                {
-                    title: 'Pot:',
-                    content: '0.00 Keys',
-                    amount: 'Total 0 Keys'
-                },
-                {
-                    title: 'Total Keys Sold:',
-                    content: '0.0000 HAH',
-                    amount: '0 USD'
-                },
-                {
-                    title: 'Round Count:',
-                    content: '0.0000 HAH',
-                    amount: '0 USD'
-                }
-            ],
-            purchaseList: [
-                {
-                    title: 'Snek',
-                    image: require('../assets/snek.png'),
-                    value: 0
-                },
-                {
-                    title: 'Whale',
-                    image: require('../assets/whale.png'),
-                    value: 0
-                },
-                {
-                    title: 'Bull',
-                    image: require('../assets/bull.png'),
-                    value: 0
-                },
-                {
-                    title: 'Bear',
-                    image: require('../assets/bear.png'),
-                    value: 0
-                }
-            ],
-            // web3: new this.Web3(window.ethereum),
             currentRound: '-',
-            countTime: 'Loading...',
             timer: null,
             barLongPoint: 0
         }
     },
     computed: {
+        countTime() {
+            return this.$t('round.loading')
+        },
+        roundList() {
+            return [
+                {
+                    title: this.$t('round.lastBuyer'),
+                    pcAddress: '-',
+                    mobileAddress: '-',
+                    amount: '0 USD'
+                },
+                {
+                    title: this.$t('round.pot'),
+                    content: '0.00 Keys',
+                    amount: 'Total 0 Keys'
+                },
+                {
+                    title: this.$t('round.totalKeySold'),
+                    content: '0.0000 HAH',
+                    amount: '0 USD'
+                },
+                {
+                    title: this.$t('round.roundCount'),
+                    content: '0.0000 HAH',
+                    amount: '0 USD'
+                }
+            ]
+        },
         barWidth() {
             return this.barLongPoint + '%'
         }

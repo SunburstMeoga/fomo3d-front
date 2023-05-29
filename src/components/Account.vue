@@ -2,7 +2,7 @@
     <div class="py-3">
         <div class="w-11/12 mr-auto ml-auto sm:flex sm:flex-col sm:w-full sm:rounded-full sm:justify-between sm:px-10">
             <div class="flex justify-between items-center text-text">
-                <div>Address:</div>
+                <div>{{ $t('account.address') }}</div>
                 <div class="flex justify-start items-center">
                     <div class="sm:hidden">
                         {{ addressFilter($store.state.walletInfo.address) }}
@@ -12,24 +12,24 @@
                     </div>
                     <div class="border cursor-pointer border-text rounded rounded-2xl px-2 text-sm text-text ml-2"
                         @click="copyContent($store.state.walletInfo.address)">
-                        Copy
+                        {{ $t('word.copy') }}
                     </div>
                 </div>
             </div>
             <div class="flex justify-between items-center text-text">
-                <div>Balance:</div>
+                <div>{{ $t('account.balance') }}</div>
                 <div>{{ $store.state.walletInfo.balance }} HAH</div>
             </div>
             <div class="flex justify-between items-center text-text">
-                <div>Total Keys:</div>
+                <div>{{ $t('account.totalKeys') }}</div>
                 <div>{{ keys }} </div>
             </div>
             <div class="flex justify-between items-center text-text">
-                <div>Earnings:</div>
+                <div>{{ $t('account.earnings') }}</div>
                 <div>{{ earnings }} </div>
             </div>
             <div class="flex justify-between items-center text-text">
-                <div>Spend:</div>
+                <div>{{ $t('account.spend') }}</div>
                 <div>{{ earnings }} HAH</div>
             </div>
         </div>
