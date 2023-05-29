@@ -68,7 +68,7 @@ export default {
             mouseControls: true,
             touchControls: true,
             scale: 1.00,
-            scaleMobile: 1.00,
+            scaleMobile: 1.20,
         })
     },
     beforeDestroy() {
