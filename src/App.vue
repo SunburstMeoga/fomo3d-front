@@ -1,19 +1,29 @@
 <template>
   <div id="app">
-    <div ref="vantaRef" v-if="!showContent" style="width:100%;height:100vh;position:fixed;z-index: -1;"></div>
+    <!-- <div ref="vantaRef" v-if="!showContent" style="width:100%;height:100vh;position:fixed;z-index: -1;"></div>
     <div v-if="!showContent" class="my_title font-bold text-5xl sm:text-6xl text-primary">Welcome to the PGChain</div>
-    <router-view v-if="showContent" />
+    <router-view v-if="showContent" /> -->
+    <van-popup v-model="showPicker" round position="bottom">
+      <van-picker show-toolbar :confirm-button-text="$t('word.confirm')" :cancel-button-text="$t('word.cancel')"
+        :columns="columns" />
+    </van-popup>
   </div>
 </template>
 <script>
 import * as THREE from 'three'
 import Globe from 'vanta/src/vanta.globe'
+import Picker from 'vant/lib/picker'
+import Popup from 'vant/lib/popup'
+import 'vant/lib/picker/style'
+import 'vant/lib/popup/style'
 export default {
   name: 'App',
+  components: { [Popup.name]: Popup, [Picker.name]: Picker },
   data() {
     return {
       showContent: false,
-      timer: null
+      columns: ['English', '简体中文', '繁體中文', '日本'],
+      timer: null, showPicker: true,
     }
   },
   created() {
@@ -23,22 +33,22 @@ export default {
     }
   },
   mounted() {
-    this.vantaEffect = Globe({
-      el: this.$refs.vantaRef,
-      THREE: THREE,
-      color: '#DA251D',
-      backgroundColor: '#000000',
-      mouseControls: true,
-      touchControls: true,
-      scale: 1.00,
-      scaleMobile: 1.00,
-    })
-    this.timer = setTimeout(() => {
-      this.showContent = true
-    }, 2000)
-    if (localStorage.getItem('connectStatus') && localStorage.getItem('connectStatus') === 'connect') {
-      this.initWallet()
-    }
+    // this.vantaEffect = Globe({
+    //   el: this.$refs.vantaRef,
+    //   THREE: THREE,
+    //   color: '#DA251D',
+    //   backgroundColor: '#000000',
+    //   mouseControls: true,
+    //   touchControls: true,
+    //   scale: 1.00,
+    //   scaleMobile: 1.00,
+    // })
+    // this.timer = setTimeout(() => {
+    //   this.showContent = true
+    // }, 2000)
+    // if (localStorage.getItem('connectStatus') && localStorage.getItem('connectStatus') === 'connect') {
+    //   this.initWallet()
+    // }
   },
   beforeDestroy() {
     clearTimeout(this.timer)
