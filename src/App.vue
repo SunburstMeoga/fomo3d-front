@@ -12,10 +12,8 @@
 <script>
 import * as THREE from 'three'
 import Globe from 'vanta/src/vanta.globe'
-import Picker from 'vant/lib/picker'
-import Popup from 'vant/lib/popup'
-import 'vant/lib/picker/style'
-import 'vant/lib/popup/style'
+import { Picker } from 'vant'
+import { Popup } from 'vant'
 export default {
   name: 'App',
   components: { [Popup.name]: Popup, [Picker.name]: Picker },
