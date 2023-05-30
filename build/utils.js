@@ -26,7 +26,7 @@ exports.cssLoaders = function (options) {
     loader: 'postcss-loader',
     options: {
       sourceMap: options.sourceMap,
-      minimize: true
+      // minimize: true 
     }
   }
 
