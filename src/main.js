@@ -11,6 +11,7 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import '@/assets/css/tailwind.css'
 import '@/assets/css/iconfont.css'
+import '@/plugins/vant'
 
 import i18n from './local'
 

@@ -12,11 +12,11 @@
 <script>
 import * as THREE from 'three'
 import Globe from 'vanta/src/vanta.globe'
-import { Picker } from 'vant'
-import { Popup } from 'vant'
+// import { Picker } from 'vant'
+// import { Popup } from 'vant'
 export default {
   name: 'App',
-  components: { [Popup.name]: Popup, [Picker.name]: Picker },
+  // components: { [Popup.name]: Popup, [Picker.name]: Picker },
   data() {
     return {
       showContent: false,
