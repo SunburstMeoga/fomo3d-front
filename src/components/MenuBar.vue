@@ -38,7 +38,13 @@
 </template>
 
 <script>
-import { Popup, Picker } from 'vant'
+// import { Popup, Picker } from 'vant'
+import Picker from 'vant/lib/picker'
+import Popup from 'vant/lib/popup'
+import 'vant/lib/picker/style'
+import 'vant/lib/popup/style'
+
+
 import Rule from '../components/Rule'
 export default {
     components: { [Popup.name]: Popup, Rule, [Picker.name]: Picker },
