@@ -35,7 +35,7 @@
             @click="handleCode">
             {{ $t('word.share') }}
         </div>
-        <van-overlay :show="showCode">
+        <van-overlay :show="showCode" @click="showCode = false">
             <div class="p-4 bg-white wrapper">
                 <div class="content">
                     <div id="qrcode" ref="qrcode" />
@@ -103,6 +103,7 @@ export default {
             // this.$nextTick(function () {
 
             // })
+            this.$refs.qrcode.innerHTML = ''
             new QRCode(this.$refs.qrcode, {
                 text: `${window.location.href}?p_addr=${window.ethereum.selectedAddress}`,
                 width: 200,
