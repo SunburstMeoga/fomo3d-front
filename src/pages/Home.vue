@@ -27,12 +27,27 @@
             <referrals></referrals>
         </div> -->
         <module-title :titleWord="$t('round.title')"></module-title>
-        <!-- <div class="bg-moduleBg bg-opacity-75 mt-2 mr-auto ml-auto mb-2 w-11/12 rounded sm:w-10/12">
-            <prize-pool></prize-pool>
-        </div> -->
         <div class="card mt-2 mr-auto ml-auto mb-2 w-11/12 sm:w-10/12">
             <prize-pool></prize-pool>
         </div>
+
+        <div class="bg-primary text-text rounded-lg mt-4 mr-auto ml-auto mb-2 w-11/12 sm:w-10/12 p-2 text-center"
+            @click="handleCode">
+            {{ $t('word.share') }}
+        </div>
+        <van-overlay :show="showCode">
+            <div class="p-4 bg-white wrapper">
+                <div class="content">
+                    <div id="qrcode" ref="qrcode" />
+                </div>
+
+
+                <!-- <qrcode-vue :value="shareUrl" :size="size" /> -->
+                <!-- <div class="buy-button text-primary-word rounded text-sm button-word mt-10" @click="saveCode">
+                    保存至手机
+                </div> -->
+            </div>
+        </van-overlay>
     </div>
 </template>
 
@@ -47,6 +62,13 @@ import Valut from '../components/Valut.vue'
 import Referrals from '../components/Referrals.vue'
 import PrizePool from '../components/PrizePool.vue'
 import Account from '../components/Account'
+import QrcodeVue from 'qrcode.vue'
+import { Popup, Overlay } from 'vant';
+
+import QRCode from 'qrcodejs2';
+
+
+
 import { config } from '../const/config.js'
 
 export default {
@@ -58,6 +80,42 @@ export default {
         Referrals,
         PrizePool,
         Account,
+        [Popup.name]: Popup,
+        [Overlay.name]: Overlay,
+
+        QrcodeVue,
+        QRCode
+    },
+    data() {
+        return {
+            shareUrl: `${window.location.href}?p_addr=${window.ethereum.selectedAddress}`,
+            showCode: false,
+            size: 600,
+            qrcode: null
+        }
+    },
+    methods: {
+        //二维码弹窗
+        handleCode() {
+            // console.log(this.$refs.qrcode)
+
+            // console.log(this.shareUrl)
+            // this.$nextTick(function () {
+
+            // })
+            new QRCode(this.$refs.qrcode, {
+                text: `${window.location.href}?p_addr=${window.ethereum.selectedAddress}`,
+                width: 200,
+                height: 200,
+                colorDark: '#000',
+                colorLight: '#fff',
+                // correctLevel: QRCode.CorrectLevel.L
+            })
+            this.showCode = true
+
+
+
+        },
     },
     mounted() {
         this.vantaEffect = Net({
@@ -70,6 +128,8 @@ export default {
             scale: 1.00,
             scaleMobile: 1.20,
         })
+        this.shareUrl = `${window.location.href}?p_addr=${window.ethereum.selectedAddress}`
+        console.log(this.shareUrl)
     },
     beforeDestroy() {
         if (this.vantaEffect) {
@@ -86,5 +146,21 @@ export default {
     backdrop-filter: blur(3px);
     background-color: #262626;
     box-shadow: rgba(0, 0, 0, 0.3) 2px 8px 8px;
+}
+
+.wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+}
+
+.content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+    background: #fff;
 }
 </style>

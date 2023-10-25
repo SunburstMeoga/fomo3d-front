@@ -26,8 +26,10 @@
                                     {{ item.content }}
                                 </div>
                                 <div v-else>
-                                    <span class="sm:hidden">{{ item.mobileAddress }}</span>
-                                    <span class="hidden sm:block">{{ item.pcAddress }}</span>
+                                    <span class="sm:hidden underline" @click="viewAddress(item.mobileAddress)">{{
+                                        item.mobileAddress }}</span>
+                                    <span class="hidden sm:block underline" @click="viewAddress(item.pcAddress)">{{
+                                        item.pcAddress }}</span>
                                 </div>
                                 <div v-if="index === 0"
                                     class="border cursor-pointer border-text rounded rounded-2xl px-2 text-sm text-text ml-2"
@@ -119,6 +121,15 @@ export default {
 
     methods: {
         addressFilter,
+        viewAddress(address) {
+            if (address == '-') {
+                return
+            }
+            console.log('start')
+
+            window.open(`https://scan.pgchain.org/address/${address}`)
+            console.log('end')
+        },
         copyContent(content) {
             if (!content) return
             navigator.clipboard.writeText(content).then(() => {

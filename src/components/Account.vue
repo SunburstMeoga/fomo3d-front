@@ -4,16 +4,16 @@
             <div class="flex justify-between items-center text-text">
                 <div>{{ $t('account.address') }}</div>
                 <div class="flex justify-start items-center">
-                    <div class="sm:hidden">
+                    <div class="sm:hidden underline" @click="viewAddress">
                         {{ addressFilter($store.state.walletInfo.address) }}
                     </div>
-                    <div class="hidden sm:block">
+                    <div class="hidden sm:block underline" @click="viewAddress">
                         {{ $store.state.walletInfo.address }}
                     </div>
-                    <div class="border cursor-pointer border-text rounded rounded-2xl px-2 text-sm text-text ml-2"
+                    <!-- <div class="border cursor-pointer border-text rounded rounded-2xl px-2 text-sm text-text ml-2"
                         @click="copyContent($store.state.walletInfo.address)">
                         {{ $t('word.copy') }}
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <div class="flex justify-between items-center text-text">
@@ -76,6 +76,12 @@ export default {
 
 
 
+        },
+        viewAddress() {
+            console.log('start')
+
+            window.open(`https://scan.pgchain.org/address/${window.ethereum.selectedAddress}`)
+            console.log('end')
         },
         copyContent(content) {
             if (!content) return
