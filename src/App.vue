@@ -95,13 +95,13 @@ export default {
               params: [
                 {
                   chainId: this.Config.chainId,
-                  chainName: 'Hash Ahead Testnet',
-                  rpcUrls: ['https://rpc-testnet.hashahead.org'],
+                  chainName: this.Config.chainName,
+                  rpcUrls: this.Config.rpcUrls,
                   iconUrls: ['https://testnet.hashahead.org/logo.png'],
-                  blockExplorerUrls: ['https://testnet.hashahead.org/'],
+                  blockExplorerUrls: this.Config.blockExplorerUrls,
                   nativeCurrency: {
-                    name: 'HAH',
-                    symbol: 'HAH',
+                    name: 'PGC',
+                    symbol: 'PGC',
                     decimals: 18
                   }
                 },
